@@ -8,20 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2611200C9A14009420E4 /* AppDelegate.swift */; };
-		A0FE2614200C9A14009420E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2613200C9A14009420E4 /* ViewController.swift */; };
-		A0FE2617200C9A14009420E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2615200C9A14009420E4 /* Main.storyboard */; };
+		A0FE2614200C9A14009420E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2613200C9A14009420E4 /* HomeViewController.swift */; };
+		A0FE2617200C9A14009420E4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2615200C9A14009420E4 /* Home.storyboard */; };
 		A0FE2619200C9A14009420E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2618200C9A14009420E4 /* Assets.xcassets */; };
 		A0FE261C200C9A14009420E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE261A200C9A14009420E4 /* LaunchScreen.storyboard */; };
+		A0FE2629200CA0C0009420E4 /* Scanning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2628200CA0C0009420E4 /* Scanning.storyboard */; };
+		A0FE262B200CA0E3009420E4 /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE262A200CA0E3009420E4 /* ScanningViewController.swift */; };
+		A0FE262F200CA2FB009420E4 /* PaymentMethod.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE262E200CA2FB009420E4 /* PaymentMethod.storyboard */; };
+		A0FE2631200CA30D009420E4 /* PaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2630200CA30D009420E4 /* PaymentMethodViewController.swift */; };
+		A0FE2634200CA349009420E4 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2633200CA349009420E4 /* About.storyboard */; };
+		A0FE2636200CA356009420E4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2635200CA356009420E4 /* AboutViewController.swift */; };
+		A0FE2639200CA3F9009420E4 /* PrivacyPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2638200CA3F9009420E4 /* PrivacyPolicy.storyboard */; };
+		A0FE263B200CA40C009420E4 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE263A200CA40C009420E4 /* PrivacyPolicyViewController.swift */; };
+		A0FE263E200CA448009420E4 /* TechSupport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE263D200CA448009420E4 /* TechSupport.storyboard */; };
+		A0FE2640200CA457009420E4 /* TechSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE263F200CA457009420E4 /* TechSupportViewController.swift */; };
+		A0FE2643200CA489009420E4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2642200CA489009420E4 /* Login.storyboard */; };
+		A0FE2645200CA494009420E4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2644200CA494009420E4 /* LoginViewController.swift */; };
+		A0FE2647200CA6BC009420E4 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2646200CA6BC009420E4 /* RootWireframe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A0FE260E200C9A13009420E4 /* Mobilicard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobilicard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FE2611200C9A14009420E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0FE2613200C9A14009420E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A0FE2616200C9A14009420E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A0FE2613200C9A14009420E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A0FE2616200C9A14009420E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		A0FE2618200C9A14009420E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0FE261B200C9A14009420E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0FE261D200C9A14009420E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0FE2628200CA0C0009420E4 /* Scanning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scanning.storyboard; sourceTree = "<group>"; };
+		A0FE262A200CA0E3009420E4 /* ScanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewController.swift; sourceTree = "<group>"; };
+		A0FE262E200CA2FB009420E4 /* PaymentMethod.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentMethod.storyboard; sourceTree = "<group>"; };
+		A0FE2630200CA30D009420E4 /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
+		A0FE2633200CA349009420E4 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		A0FE2635200CA356009420E4 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A0FE2638200CA3F9009420E4 /* PrivacyPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicy.storyboard; sourceTree = "<group>"; };
+		A0FE263A200CA40C009420E4 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		A0FE263D200CA448009420E4 /* TechSupport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TechSupport.storyboard; sourceTree = "<group>"; };
+		A0FE263F200CA457009420E4 /* TechSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechSupportViewController.swift; sourceTree = "<group>"; };
+		A0FE2642200CA489009420E4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		A0FE2644200CA494009420E4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A0FE2646200CA6BC009420E4 /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +81,106 @@
 			isa = PBXGroup;
 			children = (
 				A0FE2611200C9A14009420E4 /* AppDelegate.swift */,
-				A0FE2613200C9A14009420E4 /* ViewController.swift */,
-				A0FE2615200C9A14009420E4 /* Main.storyboard */,
+				A0FE262C200CA0F0009420E4 /* Networking */,
+				A0FE2623200C9C83009420E4 /* Views and Controllers */,
+				A0FE2626200CA07F009420E4 /* Data Store */,
+				A0FE2646200CA6BC009420E4 /* RootWireframe.swift */,
 				A0FE2618200C9A14009420E4 /* Assets.xcassets */,
 				A0FE261A200C9A14009420E4 /* LaunchScreen.storyboard */,
 				A0FE261D200C9A14009420E4 /* Info.plist */,
 			);
 			path = Mobilicard;
+			sourceTree = "<group>";
+		};
+		A0FE2623200C9C83009420E4 /* Views and Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2641200CA47A009420E4 /* Login */,
+				A0FE263C200CA431009420E4 /* TechSupport */,
+				A0FE2637200CA3E2009420E4 /* PrivacyPolicy */,
+				A0FE2632200CA336009420E4 /* About */,
+				A0FE262D200CA2D7009420E4 /* PaymentMethod */,
+				A0FE2625200CA051009420E4 /* Scanning */,
+				A0FE2624200CA016009420E4 /* Home */,
+			);
+			path = "Views and Controllers";
+			sourceTree = "<group>";
+		};
+		A0FE2624200CA016009420E4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2615200C9A14009420E4 /* Home.storyboard */,
+				A0FE2613200C9A14009420E4 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A0FE2625200CA051009420E4 /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2628200CA0C0009420E4 /* Scanning.storyboard */,
+				A0FE262A200CA0E3009420E4 /* ScanningViewController.swift */,
+			);
+			path = Scanning;
+			sourceTree = "<group>";
+		};
+		A0FE2626200CA07F009420E4 /* Data Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Store";
+			sourceTree = "<group>";
+		};
+		A0FE262C200CA0F0009420E4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A0FE262D200CA2D7009420E4 /* PaymentMethod */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE262E200CA2FB009420E4 /* PaymentMethod.storyboard */,
+				A0FE2630200CA30D009420E4 /* PaymentMethodViewController.swift */,
+			);
+			path = PaymentMethod;
+			sourceTree = "<group>";
+		};
+		A0FE2632200CA336009420E4 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2633200CA349009420E4 /* About.storyboard */,
+				A0FE2635200CA356009420E4 /* AboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		A0FE2637200CA3E2009420E4 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2638200CA3F9009420E4 /* PrivacyPolicy.storyboard */,
+				A0FE263A200CA40C009420E4 /* PrivacyPolicyViewController.swift */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
+		A0FE263C200CA431009420E4 /* TechSupport */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE263D200CA448009420E4 /* TechSupport.storyboard */,
+				A0FE263F200CA457009420E4 /* TechSupportViewController.swift */,
+			);
+			path = TechSupport;
+			sourceTree = "<group>";
+		};
+		A0FE2641200CA47A009420E4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2642200CA489009420E4 /* Login.storyboard */,
+				A0FE2644200CA494009420E4 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +242,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0FE2639200CA3F9009420E4 /* PrivacyPolicy.storyboard in Resources */,
 				A0FE261C200C9A14009420E4 /* LaunchScreen.storyboard in Resources */,
 				A0FE2619200C9A14009420E4 /* Assets.xcassets in Resources */,
-				A0FE2617200C9A14009420E4 /* Main.storyboard in Resources */,
+				A0FE2634200CA349009420E4 /* About.storyboard in Resources */,
+				A0FE262F200CA2FB009420E4 /* PaymentMethod.storyboard in Resources */,
+				A0FE2617200C9A14009420E4 /* Home.storyboard in Resources */,
+				A0FE263E200CA448009420E4 /* TechSupport.storyboard in Resources */,
+				A0FE2629200CA0C0009420E4 /* Scanning.storyboard in Resources */,
+				A0FE2643200CA489009420E4 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,20 +261,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0FE2614200C9A14009420E4 /* ViewController.swift in Sources */,
+				A0FE2614200C9A14009420E4 /* HomeViewController.swift in Sources */,
+				A0FE262B200CA0E3009420E4 /* ScanningViewController.swift in Sources */,
+				A0FE2647200CA6BC009420E4 /* RootWireframe.swift in Sources */,
+				A0FE2631200CA30D009420E4 /* PaymentMethodViewController.swift in Sources */,
+				A0FE263B200CA40C009420E4 /* PrivacyPolicyViewController.swift in Sources */,
+				A0FE2645200CA494009420E4 /* LoginViewController.swift in Sources */,
+				A0FE2636200CA356009420E4 /* AboutViewController.swift in Sources */,
 				A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */,
+				A0FE2640200CA457009420E4 /* TechSupportViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A0FE2615200C9A14009420E4 /* Main.storyboard */ = {
+		A0FE2615200C9A14009420E4 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A0FE2616200C9A14009420E4 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		A0FE261A200C9A14009420E4 /* LaunchScreen.storyboard */ = {
