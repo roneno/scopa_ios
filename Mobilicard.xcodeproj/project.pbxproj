@@ -25,6 +25,30 @@
 		A0FE2643200CA489009420E4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2642200CA489009420E4 /* Login.storyboard */; };
 		A0FE2645200CA494009420E4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2644200CA494009420E4 /* LoginViewController.swift */; };
 		A0FE2647200CA6BC009420E4 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2646200CA6BC009420E4 /* RootWireframe.swift */; };
+		A0FE2651200CB947009420E4 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2650200CB947009420E4 /* LoginWireframe.swift */; };
+		A0FE2653200CB956009420E4 /* LoginWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2652200CB956009420E4 /* LoginWireframeProtocol.swift */; };
+		A0FE2655200CB979009420E4 /* TechSupportWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2654200CB979009420E4 /* TechSupportWireframe.swift */; };
+		A0FE2657200CB98A009420E4 /* TechSupportWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2656200CB98A009420E4 /* TechSupportWireframeProtocol.swift */; };
+		A0FE2659200CB99F009420E4 /* PrivacyPolicyWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2658200CB99F009420E4 /* PrivacyPolicyWireframe.swift */; };
+		A0FE265B200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE265A200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift */; };
+		A0FE265D200CB9E0009420E4 /* AboutWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE265C200CB9E0009420E4 /* AboutWireframe.swift */; };
+		A0FE265F200CBA0B009420E4 /* AboutWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE265E200CBA0B009420E4 /* AboutWireframeProtocol.swift */; };
+		A0FE2665200CBACC009420E4 /* PaymentMethodWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2664200CBACC009420E4 /* PaymentMethodWireframe.swift */; };
+		A0FE2667200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2666200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift */; };
+		A0FE2669200CBB03009420E4 /* ScanningWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2668200CBB03009420E4 /* ScanningWireframe.swift */; };
+		A0FE266B200CBB10009420E4 /* ScanningWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE266A200CBB10009420E4 /* ScanningWireframeProtocol.swift */; };
+		A0FE266D200CBB2F009420E4 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE266C200CBB2F009420E4 /* HomeWireframe.swift */; };
+		A0FE266F200CBB40009420E4 /* HomeWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE266E200CBB40009420E4 /* HomeWireframeProtocol.swift */; };
+		A0FE2683200CBE41009420E4 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2682200CBE41009420E4 /* LoginInteractor.swift */; };
+		A0FE2686200CBE5B009420E4 /* LoginInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2685200CBE5B009420E4 /* LoginInteractorProtocol.swift */; };
+		A0FE2688200CBE88009420E4 /* PrivacyPolicyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2687200CBE88009420E4 /* PrivacyPolicyInteractor.swift */; };
+		A0FE268A200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2689200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift */; };
+		A0FE268C200CBEAC009420E4 /* PaymentMethodInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268B200CBEAC009420E4 /* PaymentMethodInteractor.swift */; };
+		A0FE268E200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268D200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift */; };
+		A0FE2690200CBECD009420E4 /* ScanningInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */; };
+		A0FE2692200CBED7009420E4 /* ScanningInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2691200CBED7009420E4 /* ScanningInteractorProtocol.swift */; };
+		A0FE2694200CBEE4009420E4 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2693200CBEE4009420E4 /* HomeInteractor.swift */; };
+		A0FE2696200CBEEC009420E4 /* ScanningInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2695200CBEEC009420E4 /* ScanningInteractorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +72,30 @@
 		A0FE2642200CA489009420E4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A0FE2644200CA494009420E4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A0FE2646200CA6BC009420E4 /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
+		A0FE2650200CB947009420E4 /* LoginWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
+		A0FE2652200CB956009420E4 /* LoginWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE2654200CB979009420E4 /* TechSupportWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechSupportWireframe.swift; sourceTree = "<group>"; };
+		A0FE2656200CB98A009420E4 /* TechSupportWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechSupportWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE2658200CB99F009420E4 /* PrivacyPolicyWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyWireframe.swift; sourceTree = "<group>"; };
+		A0FE265A200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivatePolicyWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE265C200CB9E0009420E4 /* AboutWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWireframe.swift; sourceTree = "<group>"; };
+		A0FE265E200CBA0B009420E4 /* AboutWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE2664200CBACC009420E4 /* PaymentMethodWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodWireframe.swift; sourceTree = "<group>"; };
+		A0FE2666200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE2668200CBB03009420E4 /* ScanningWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningWireframe.swift; sourceTree = "<group>"; };
+		A0FE266A200CBB10009420E4 /* ScanningWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE266C200CBB2F009420E4 /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
+		A0FE266E200CBB40009420E4 /* HomeWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframeProtocol.swift; sourceTree = "<group>"; };
+		A0FE2682200CBE41009420E4 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		A0FE2685200CBE5B009420E4 /* LoginInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorProtocol.swift; sourceTree = "<group>"; };
+		A0FE2687200CBE88009420E4 /* PrivacyPolicyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyInteractor.swift; sourceTree = "<group>"; };
+		A0FE2689200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyInteractorProtocol.swift; sourceTree = "<group>"; };
+		A0FE268B200CBEAC009420E4 /* PaymentMethodInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodInteractor.swift; sourceTree = "<group>"; };
+		A0FE268D200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodInteractorProtocol.swift; sourceTree = "<group>"; };
+		A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractor.swift; sourceTree = "<group>"; };
+		A0FE2691200CBED7009420E4 /* ScanningInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractorProtocol.swift; sourceTree = "<group>"; };
+		A0FE2693200CBEE4009420E4 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		A0FE2695200CBEEC009420E4 /* ScanningInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,37 +128,21 @@
 		A0FE2610200C9A13009420E4 /* Mobilicard */ = {
 			isa = PBXGroup;
 			children = (
+				A0FE2670200CBC6B009420E4 /* Modules */,
+				A0FE2671200CBC85009420E4 /* Common */,
 				A0FE2611200C9A14009420E4 /* AppDelegate.swift */,
-				A0FE262C200CA0F0009420E4 /* Networking */,
-				A0FE2623200C9C83009420E4 /* Views and Controllers */,
-				A0FE2626200CA07F009420E4 /* Data Store */,
 				A0FE2646200CA6BC009420E4 /* RootWireframe.swift */,
-				A0FE2618200C9A14009420E4 /* Assets.xcassets */,
-				A0FE261A200C9A14009420E4 /* LaunchScreen.storyboard */,
-				A0FE261D200C9A14009420E4 /* Info.plist */,
+				A0FE2648200CB638009420E4 /* Supporting Files */,
 			);
 			path = Mobilicard;
-			sourceTree = "<group>";
-		};
-		A0FE2623200C9C83009420E4 /* Views and Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				A0FE2641200CA47A009420E4 /* Login */,
-				A0FE263C200CA431009420E4 /* TechSupport */,
-				A0FE2637200CA3E2009420E4 /* PrivacyPolicy */,
-				A0FE2632200CA336009420E4 /* About */,
-				A0FE262D200CA2D7009420E4 /* PaymentMethod */,
-				A0FE2625200CA051009420E4 /* Scanning */,
-				A0FE2624200CA016009420E4 /* Home */,
-			);
-			path = "Views and Controllers";
 			sourceTree = "<group>";
 		};
 		A0FE2624200CA016009420E4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE2615200C9A14009420E4 /* Home.storyboard */,
-				A0FE2613200C9A14009420E4 /* HomeViewController.swift */,
+				A0FE267F200CBDB0009420E4 /* Business Logic */,
+				A0FE264F200CB92D009420E4 /* Routing */,
+				A0FE2678200CBD0B009420E4 /* User Interface */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -118,8 +150,9 @@
 		A0FE2625200CA051009420E4 /* Scanning */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE2628200CA0C0009420E4 /* Scanning.storyboard */,
-				A0FE262A200CA0E3009420E4 /* ScanningViewController.swift */,
+				A0FE267E200CBDA4009420E4 /* Business Logic */,
+				A0FE264E200CB927009420E4 /* Routing */,
+				A0FE2677200CBCFE009420E4 /* User Interface */,
 			);
 			path = Scanning;
 			sourceTree = "<group>";
@@ -131,18 +164,12 @@
 			path = "Data Store";
 			sourceTree = "<group>";
 		};
-		A0FE262C200CA0F0009420E4 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		A0FE262D200CA2D7009420E4 /* PaymentMethod */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE262E200CA2FB009420E4 /* PaymentMethod.storyboard */,
-				A0FE2630200CA30D009420E4 /* PaymentMethodViewController.swift */,
+				A0FE267D200CBD96009420E4 /* Business Logic */,
+				A0FE264D200CB91E009420E4 /* Routing */,
+				A0FE2676200CBCEE009420E4 /* User Interface */,
 			);
 			path = PaymentMethod;
 			sourceTree = "<group>";
@@ -150,8 +177,8 @@
 		A0FE2632200CA336009420E4 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE2633200CA349009420E4 /* About.storyboard */,
-				A0FE2635200CA356009420E4 /* AboutViewController.swift */,
+				A0FE264C200CB918009420E4 /* Routing */,
+				A0FE2675200CBCDD009420E4 /* User Interface */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -159,8 +186,9 @@
 		A0FE2637200CA3E2009420E4 /* PrivacyPolicy */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE2638200CA3F9009420E4 /* PrivacyPolicy.storyboard */,
-				A0FE263A200CA40C009420E4 /* PrivacyPolicyViewController.swift */,
+				A0FE267B200CBD4E009420E4 /* Business Logic */,
+				A0FE264B200CB910009420E4 /* Routing */,
+				A0FE2674200CBCD1009420E4 /* User Interface */,
 			);
 			path = PrivacyPolicy;
 			sourceTree = "<group>";
@@ -168,8 +196,8 @@
 		A0FE263C200CA431009420E4 /* TechSupport */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE263D200CA448009420E4 /* TechSupport.storyboard */,
-				A0FE263F200CA457009420E4 /* TechSupportViewController.swift */,
+				A0FE264A200CB906009420E4 /* Routing */,
+				A0FE2673200CBCC3009420E4 /* User Interface */,
 			);
 			path = TechSupport;
 			sourceTree = "<group>";
@@ -177,10 +205,214 @@
 		A0FE2641200CA47A009420E4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A0FE2679200CBD2D009420E4 /* Business Logic */,
+				A0FE2649200CB8DC009420E4 /* Routing */,
+				A0FE2672200CBCB7009420E4 /* User Interface */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A0FE2648200CB638009420E4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2618200C9A14009420E4 /* Assets.xcassets */,
+				A0FE261A200C9A14009420E4 /* LaunchScreen.storyboard */,
+				A0FE261D200C9A14009420E4 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0FE2649200CB8DC009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2650200CB947009420E4 /* LoginWireframe.swift */,
+				A0FE2652200CB956009420E4 /* LoginWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE264A200CB906009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2654200CB979009420E4 /* TechSupportWireframe.swift */,
+				A0FE2656200CB98A009420E4 /* TechSupportWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE264B200CB910009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2658200CB99F009420E4 /* PrivacyPolicyWireframe.swift */,
+				A0FE265A200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE264C200CB918009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE265C200CB9E0009420E4 /* AboutWireframe.swift */,
+				A0FE265E200CBA0B009420E4 /* AboutWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE264D200CB91E009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2664200CBACC009420E4 /* PaymentMethodWireframe.swift */,
+				A0FE2666200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE264E200CB927009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2668200CBB03009420E4 /* ScanningWireframe.swift */,
+				A0FE266A200CBB10009420E4 /* ScanningWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE264F200CB92D009420E4 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE266C200CBB2F009420E4 /* HomeWireframe.swift */,
+				A0FE266E200CBB40009420E4 /* HomeWireframeProtocol.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		A0FE2670200CBC6B009420E4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2641200CA47A009420E4 /* Login */,
+				A0FE263C200CA431009420E4 /* TechSupport */,
+				A0FE2637200CA3E2009420E4 /* PrivacyPolicy */,
+				A0FE2632200CA336009420E4 /* About */,
+				A0FE262D200CA2D7009420E4 /* PaymentMethod */,
+				A0FE2625200CA051009420E4 /* Scanning */,
+				A0FE2624200CA016009420E4 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		A0FE2671200CBC85009420E4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2626200CA07F009420E4 /* Data Store */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A0FE2672200CBCB7009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
 				A0FE2642200CA489009420E4 /* Login.storyboard */,
 				A0FE2644200CA494009420E4 /* LoginViewController.swift */,
 			);
-			path = Login;
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2673200CBCC3009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE263D200CA448009420E4 /* TechSupport.storyboard */,
+				A0FE263F200CA457009420E4 /* TechSupportViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2674200CBCD1009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2638200CA3F9009420E4 /* PrivacyPolicy.storyboard */,
+				A0FE263A200CA40C009420E4 /* PrivacyPolicyViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2675200CBCDD009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2633200CA349009420E4 /* About.storyboard */,
+				A0FE2635200CA356009420E4 /* AboutViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2676200CBCEE009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE262E200CA2FB009420E4 /* PaymentMethod.storyboard */,
+				A0FE2630200CA30D009420E4 /* PaymentMethodViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2677200CBCFE009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2628200CA0C0009420E4 /* Scanning.storyboard */,
+				A0FE262A200CA0E3009420E4 /* ScanningViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2678200CBD0B009420E4 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2615200C9A14009420E4 /* Home.storyboard */,
+				A0FE2613200C9A14009420E4 /* HomeViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		A0FE2679200CBD2D009420E4 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2682200CBE41009420E4 /* LoginInteractor.swift */,
+				A0FE2685200CBE5B009420E4 /* LoginInteractorProtocol.swift */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		A0FE267B200CBD4E009420E4 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2687200CBE88009420E4 /* PrivacyPolicyInteractor.swift */,
+				A0FE2689200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		A0FE267D200CBD96009420E4 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE268B200CBEAC009420E4 /* PaymentMethodInteractor.swift */,
+				A0FE268D200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		A0FE267E200CBDA4009420E4 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */,
+				A0FE2691200CBED7009420E4 /* ScanningInteractorProtocol.swift */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		A0FE267F200CBDB0009420E4 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A0FE2693200CBEE4009420E4 /* HomeInteractor.swift */,
+				A0FE2695200CBEEC009420E4 /* ScanningInteractorProtocol.swift */,
+			);
+			path = "Business Logic";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,15 +493,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0FE2655200CB979009420E4 /* TechSupportWireframe.swift in Sources */,
 				A0FE2614200C9A14009420E4 /* HomeViewController.swift in Sources */,
 				A0FE262B200CA0E3009420E4 /* ScanningViewController.swift in Sources */,
 				A0FE2647200CA6BC009420E4 /* RootWireframe.swift in Sources */,
 				A0FE2631200CA30D009420E4 /* PaymentMethodViewController.swift in Sources */,
+				A0FE2692200CBED7009420E4 /* ScanningInteractorProtocol.swift in Sources */,
+				A0FE2669200CBB03009420E4 /* ScanningWireframe.swift in Sources */,
+				A0FE2657200CB98A009420E4 /* TechSupportWireframeProtocol.swift in Sources */,
 				A0FE263B200CA40C009420E4 /* PrivacyPolicyViewController.swift in Sources */,
+				A0FE2653200CB956009420E4 /* LoginWireframeProtocol.swift in Sources */,
 				A0FE2645200CA494009420E4 /* LoginViewController.swift in Sources */,
+				A0FE2686200CBE5B009420E4 /* LoginInteractorProtocol.swift in Sources */,
+				A0FE265B200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift in Sources */,
+				A0FE2659200CB99F009420E4 /* PrivacyPolicyWireframe.swift in Sources */,
+				A0FE2688200CBE88009420E4 /* PrivacyPolicyInteractor.swift in Sources */,
+				A0FE2696200CBEEC009420E4 /* ScanningInteractorProtocol.swift in Sources */,
 				A0FE2636200CA356009420E4 /* AboutViewController.swift in Sources */,
+				A0FE265D200CB9E0009420E4 /* AboutWireframe.swift in Sources */,
 				A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */,
+				A0FE2690200CBECD009420E4 /* ScanningInteractor.swift in Sources */,
+				A0FE2694200CBEE4009420E4 /* HomeInteractor.swift in Sources */,
+				A0FE266B200CBB10009420E4 /* ScanningWireframeProtocol.swift in Sources */,
+				A0FE268E200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift in Sources */,
+				A0FE268C200CBEAC009420E4 /* PaymentMethodInteractor.swift in Sources */,
+				A0FE2651200CB947009420E4 /* LoginWireframe.swift in Sources */,
 				A0FE2640200CA457009420E4 /* TechSupportViewController.swift in Sources */,
+				A0FE268A200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift in Sources */,
+				A0FE2665200CBACC009420E4 /* PaymentMethodWireframe.swift in Sources */,
+				A0FE2667200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift in Sources */,
+				A0FE2683200CBE41009420E4 /* LoginInteractor.swift in Sources */,
+				A0FE265F200CBA0B009420E4 /* AboutWireframeProtocol.swift in Sources */,
+				A0FE266D200CBB2F009420E4 /* HomeWireframe.swift in Sources */,
+				A0FE266F200CBB40009420E4 /* HomeWireframeProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,12 +664,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M679ZJ5M;
-				INFOPLIST_FILE = Mobilicard/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Mobilicard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vb.Test.Mobilicard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -423,12 +679,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M679ZJ5M;
-				INFOPLIST_FILE = Mobilicard/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Mobilicard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vb.Test.Mobilicard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
