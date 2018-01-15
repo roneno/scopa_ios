@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0EAD86E200CF59A002E7699 /* HomeIteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */; };
 		A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2611200C9A14009420E4 /* AppDelegate.swift */; };
 		A0FE2614200C9A14009420E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2613200C9A14009420E4 /* HomeViewController.swift */; };
 		A0FE2617200C9A14009420E4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2615200C9A14009420E4 /* Home.storyboard */; };
@@ -48,10 +49,10 @@
 		A0FE2690200CBECD009420E4 /* ScanningInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */; };
 		A0FE2692200CBED7009420E4 /* ScanningInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2691200CBED7009420E4 /* ScanningInteractorProtocol.swift */; };
 		A0FE2694200CBEE4009420E4 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2693200CBEE4009420E4 /* HomeInteractor.swift */; };
-		A0FE2696200CBEEC009420E4 /* ScanningInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2695200CBEEC009420E4 /* ScanningInteractorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE260E200C9A13009420E4 /* Mobilicard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobilicard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FE2611200C9A14009420E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0FE2613200C9A14009420E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractor.swift; sourceTree = "<group>"; };
 		A0FE2691200CBED7009420E4 /* ScanningInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE2693200CBEE4009420E4 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
-		A0FE2695200CBEEC009420E4 /* ScanningInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,7 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				A0FE2693200CBEE4009420E4 /* HomeInteractor.swift */,
-				A0FE2695200CBEEC009420E4 /* ScanningInteractorProtocol.swift */,
+				A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -495,6 +495,7 @@
 			files = (
 				A0FE2655200CB979009420E4 /* TechSupportWireframe.swift in Sources */,
 				A0FE2614200C9A14009420E4 /* HomeViewController.swift in Sources */,
+				A0EAD86E200CF59A002E7699 /* HomeIteractorProtocol.swift in Sources */,
 				A0FE262B200CA0E3009420E4 /* ScanningViewController.swift in Sources */,
 				A0FE2647200CA6BC009420E4 /* RootWireframe.swift in Sources */,
 				A0FE2631200CA30D009420E4 /* PaymentMethodViewController.swift in Sources */,
@@ -508,7 +509,6 @@
 				A0FE265B200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift in Sources */,
 				A0FE2659200CB99F009420E4 /* PrivacyPolicyWireframe.swift in Sources */,
 				A0FE2688200CBE88009420E4 /* PrivacyPolicyInteractor.swift in Sources */,
-				A0FE2696200CBEEC009420E4 /* ScanningInteractorProtocol.swift in Sources */,
 				A0FE2636200CA356009420E4 /* AboutViewController.swift in Sources */,
 				A0FE265D200CB9E0009420E4 /* AboutWireframe.swift in Sources */,
 				A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */,

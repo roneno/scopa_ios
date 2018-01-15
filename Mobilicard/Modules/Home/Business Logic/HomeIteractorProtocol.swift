@@ -1,5 +1,5 @@
 //
-//  ScanningInteractorProtocol.swift
+//  HomeIteractorProtocol.swift
 //  Mobilicard
 //
 //  Created by Vsevolod on 1/15/18.
