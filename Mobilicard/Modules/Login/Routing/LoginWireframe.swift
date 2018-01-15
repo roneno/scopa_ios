@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LoginWireframe: LoginWireframeProtocol {
+final class LoginWireframe: LoginWireframeProtocol {    
     
     static let sharedInstance = LoginWireframe()
     fileprivate init() {}
@@ -24,10 +24,7 @@ final class LoginWireframe: LoginWireframeProtocol {
         self.window?.makeKeyAndVisible()
     }
     
-    func presentChatScreen(username: String) {
-        LoginInteractor.shared.username = username
-        let chatViewControllerUser = ChatViewController()
-        chatViewControllerUser.username = username
+    func presentHomeScreen(username: String) {
         
         let chatViewController = UIStoryboard.init(name: Constants.chatStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.chatStoryboardIdentifier) as? UINavigationController
         
@@ -35,7 +32,7 @@ final class LoginWireframe: LoginWireframeProtocol {
     }
     
     private struct Constants {
-        static let chatStoryboardName = "Chat"
+        static let chatStoryboardName = "Home"
         static let loginStoryboardName = "Login"
         static let chatStoryboardIdentifier = "ChatViewController"
         static let loginStoryboardIdentifier = "LoginViewController"
