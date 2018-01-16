@@ -10,5 +10,5 @@ import UIKit
 
 @objc protocol LoginWireframeProtocol: class {
     func presentLoginScreenViewControllerInWindow()
-    func presentHomeScreen(username: String)
+    func presentHomeScreen()
 }

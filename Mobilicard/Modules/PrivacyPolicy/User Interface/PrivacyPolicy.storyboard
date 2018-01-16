@@ -13,7 +13,7 @@
         <!--Privacy Policy View Controller-->
         <scene sceneID="eiu-AJ-q9k">
             <objects>
-                <viewController storyboardIdentifier="PrivacyPolicy" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eCj-kZ-PaH" customClass="PrivacyPolicyViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eCj-kZ-PaH" customClass="PrivacyPolicyViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nhg-gs-TG4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

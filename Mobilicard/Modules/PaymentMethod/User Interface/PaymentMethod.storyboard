@@ -13,7 +13,7 @@
         <!--Payment Method View Controller-->
         <scene sceneID="i3g-4v-K47">
             <objects>
-                <viewController storyboardIdentifier="PaymentMethod" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WTv-qn-hNO" customClass="PaymentMethodViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentMethodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WTv-qn-hNO" customClass="PaymentMethodViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hgk-7Z-ngI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

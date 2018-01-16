@@ -24,17 +24,17 @@ final class LoginWireframe: LoginWireframeProtocol {
         self.window?.makeKeyAndVisible()
     }
     
-    func presentHomeScreen(username: String) {
+    func presentHomeScreen() {
         
-        let chatViewController = UIStoryboard.init(name: Constants.chatStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.chatStoryboardIdentifier) as? UINavigationController
+        let homeViewController = UIStoryboard.init(name: Constants.homeStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.homeStoryboardIdentifier)
         
-        self.loginScreenViewController?.present(chatViewController!, animated: true, completion: nil)
+        self.loginScreenViewController?.present(homeViewController, animated: true, completion: nil)
     }
     
     private struct Constants {
-        static let chatStoryboardName = "Home"
+        static let homeStoryboardName = "Home"
         static let loginStoryboardName = "Login"
-        static let chatStoryboardIdentifier = "ChatViewController"
+        static let homeStoryboardIdentifier = "HomeViewController"
         static let loginStoryboardIdentifier = "LoginViewController"
     }
 }

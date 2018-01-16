@@ -35,6 +35,9 @@
                                         <rect key="frame" x="0.0" y="40" width="335" height="30"/>
                                         <color key="backgroundColor" red="0.3458178734646008" green="1" blue="0.3621585982785972" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Send me SMS"/>
+                                        <connections>
+                                            <action selector="sendSMS:" destination="tit-IO-cOy" eventType="touchUpInside" id="gpr-dv-lol"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -48,6 +51,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3qw-pT-vTH"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumber" destination="Wvn-cg-0cd" id="FLt-ve-50r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ci0-r3-esc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

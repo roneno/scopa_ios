@@ -13,7 +13,7 @@
         <!--About View Controller-->
         <scene sceneID="fRS-Dd-o4E">
             <objects>
-                <viewController storyboardIdentifier="About" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1ZB-hr-72B" customClass="AboutViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1ZB-hr-72B" customClass="AboutViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OFX-14-K2E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

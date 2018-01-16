@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol HomeWireframeProtocol: class {
+    func presentScanningScreen()
+}
