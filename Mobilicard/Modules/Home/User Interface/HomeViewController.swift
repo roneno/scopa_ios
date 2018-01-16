@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func searchDevice(_ sender: UIButton) {
         self.navigation = HomeWireframe()
+        self.navigation?.homeScreenViewController = self
         self.navigation?.presentScanningScreen()
     }
 }

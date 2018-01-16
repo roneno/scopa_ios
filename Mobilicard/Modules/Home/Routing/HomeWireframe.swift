@@ -14,9 +14,9 @@ final class HomeWireframe: HomeWireframeProtocol {
     
     func presentScanningScreen() {
         
-        let scanningViewController = UIStoryboard.init(name: Constants.scanningStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.scanningStoryboardIdentifier)
+        let scanningViewController = UIStoryboard.init(name: Constants.scanningStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.scanningStoryboardIdentifier) as? ScanningViewController
         
-        self.homeScreenViewController?.present(scanningViewController, animated: true, completion: nil)
+        self.homeScreenViewController?.present(scanningViewController!, animated: true, completion: nil)
     }
     
     private struct Constants {
