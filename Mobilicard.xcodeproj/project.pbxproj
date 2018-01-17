@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0501CB3200F5DEA00273302 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */; };
 		A0EAD86E200CF59A002E7699 /* HomeIteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */; };
 		A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2611200C9A14009420E4 /* AppDelegate.swift */; };
 		A0FE2614200C9A14009420E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2613200C9A14009420E4 /* HomeViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE260E200C9A13009420E4 /* Mobilicard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobilicard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FE2611200C9A14009420E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,17 +105,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0501CB3200F5DEA00273302 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0501CB1200F5DE900273302 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0FE2605200C9A13009420E4 = {
 			isa = PBXGroup;
 			children = (
 				A0FE2610200C9A13009420E4 /* Mobilicard */,
 				A0FE260F200C9A13009420E4 /* Products */,
+				A0501CB1200F5DE900273302 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -448,6 +460,11 @@
 					A0FE260D200C9A13009420E4 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -665,6 +682,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M679ZJ5M;
 				INFOPLIST_FILE = "$(SRCROOT)/Mobilicard/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vb.Test.Mobilicard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -680,6 +698,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M679ZJ5M;
 				INFOPLIST_FILE = "$(SRCROOT)/Mobilicard/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vb.Test.Mobilicard;
 				PRODUCT_NAME = "$(TARGET_NAME)";

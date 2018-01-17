@@ -9,7 +9,14 @@
 import UIKit
 
 final class ScanningViewController: UIViewController {
-    
+    @IBOutlet var porgressView: UIView!
+    var interactor: ScanningInteractor?
     var navigation: ScanningWireframe?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.interactor = ScanningInteractor()
+        self.interactor?.searchForScopos()
+    }
 
 }
