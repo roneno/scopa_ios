@@ -31,12 +31,17 @@ final class LoginInteractor: LoginInteractorProtocol {
             
             guard let data = data else { return }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+                let serverResponce = try JSONDecoder().decode(ServerResponce.self, from: data)
+                print(serverResponce)
             } catch {
                 print(error)
             }
             }.resume()
+    }
+    
+    private struct ServerResponce: Decodable {
+        var error: Int?
+        var message: String?
     }
     
     private struct Constants {

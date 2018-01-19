@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,25 +19,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-YV-Bxx">
-                                <rect key="frame" x="67" y="113" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobilicard_logo" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-YV-Bxx">
+                                <rect key="frame" x="21.5" y="133.5" width="333" height="67"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hnK-kb-tmF">
-                                <rect key="frame" x="20" y="298.5" width="335" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="geW-oF-GUj">
+                                <rect key="frame" x="20" y="264.5" width="335" height="136.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wvn-cg-0cd">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Phone Number for Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GMP-HU-VKH">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wvn-cg-0cd">
+                                        <rect key="frame" x="0.0" y="40.5" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-OQ-igu">
-                                        <rect key="frame" x="0.0" y="40" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="90.5" width="335" height="46"/>
                                         <color key="backgroundColor" red="0.3458178734646008" green="1" blue="0.3621585982785972" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="Send me SMS"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="sendSMS:" destination="tit-IO-cOy" eventType="touchUpInside" id="gpr-dv-lol"/>
+                                            <segue destination="VTZ-zR-C3h" kind="show" id="EXm-ti-Lp2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -44,10 +57,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hnK-kb-tmF" firstAttribute="leading" secondItem="3qw-pT-vTH" secondAttribute="leading" constant="20" id="Hh2-Qs-kkT"/>
-                            <constraint firstItem="3qw-pT-vTH" firstAttribute="trailing" secondItem="hnK-kb-tmF" secondAttribute="trailing" constant="20" id="Nr1-hC-weu"/>
-                            <constraint firstItem="hnK-kb-tmF" firstAttribute="centerY" secondItem="xCP-hm-fMd" secondAttribute="centerY" id="jxX-b0-Cf4"/>
-                            <constraint firstItem="hnK-kb-tmF" firstAttribute="centerX" secondItem="xCP-hm-fMd" secondAttribute="centerX" id="y2m-hS-DDW"/>
+                            <constraint firstItem="geW-oF-GUj" firstAttribute="centerX" secondItem="xCP-hm-fMd" secondAttribute="centerX" id="3e2-gD-ryw"/>
+                            <constraint firstItem="bqN-YV-Bxx" firstAttribute="centerY" secondItem="xCP-hm-fMd" secondAttribute="centerY" multiplier="0.5" id="OKU-jp-Iux"/>
+                            <constraint firstItem="geW-oF-GUj" firstAttribute="centerY" secondItem="xCP-hm-fMd" secondAttribute="centerY" id="SdO-jc-NS6"/>
+                            <constraint firstItem="geW-oF-GUj" firstAttribute="leading" secondItem="3qw-pT-vTH" secondAttribute="leading" constant="20" id="aDb-AX-T3w"/>
+                            <constraint firstItem="bqN-YV-Bxx" firstAttribute="width" secondItem="xCP-hm-fMd" secondAttribute="width" multiplier="0.888" id="gty-oS-6BP"/>
+                            <constraint firstItem="bqN-YV-Bxx" firstAttribute="centerX" secondItem="xCP-hm-fMd" secondAttribute="centerX" id="ozL-xO-KTo"/>
+                            <constraint firstItem="3qw-pT-vTH" firstAttribute="trailing" secondItem="geW-oF-GUj" secondAttribute="trailing" constant="20" id="qOT-ZR-paR"/>
+                            <constraint firstItem="bqN-YV-Bxx" firstAttribute="height" secondItem="xCP-hm-fMd" secondAttribute="height" multiplier="0.1" id="urg-TQ-Ir1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3qw-pT-vTH"/>
                     </view>
@@ -59,5 +76,59 @@
             </objects>
             <point key="canvasLocation" x="124" y="173.16341829085459"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Mlu-Zc-td7">
+            <objects>
+                <viewController id="VTZ-zR-C3h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cD4-91-DrL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobilicard_logo" translatesAutoresizingMaskIntoConstraints="NO" id="2kh-hv-P8D">
+                                <rect key="frame" x="21" y="133.5" width="333" height="67"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XNX-ym-6iT">
+                                <rect key="frame" x="30" y="273.5" width="315" height="120.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Verification Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b08-dD-1T5">
+                                        <rect key="frame" x="42" y="0.0" width="231" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5-Digit Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ1-RE-zLE">
+                                        <rect key="frame" x="105.5" y="40.5" width="104" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0P-ef-Cw5">
+                                        <rect key="frame" x="114" y="90.5" width="87" height="30"/>
+                                        <state key="normal" title="Resend SMS"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2kh-hv-P8D" firstAttribute="centerY" secondItem="cD4-91-DrL" secondAttribute="centerY" multiplier="0.5" id="Dtg-5W-8A9"/>
+                            <constraint firstItem="XNX-ym-6iT" firstAttribute="centerY" secondItem="cD4-91-DrL" secondAttribute="centerY" id="E5N-HZ-VKa"/>
+                            <constraint firstItem="XNX-ym-6iT" firstAttribute="centerX" secondItem="cD4-91-DrL" secondAttribute="centerX" id="Krf-Ck-JQ9"/>
+                            <constraint firstItem="UXC-wB-nb2" firstAttribute="trailing" secondItem="XNX-ym-6iT" secondAttribute="trailing" constant="30" id="R9f-kz-AAy"/>
+                            <constraint firstItem="2kh-hv-P8D" firstAttribute="width" secondItem="cD4-91-DrL" secondAttribute="width" multiplier="0.888" id="bfi-YR-5Eg"/>
+                            <constraint firstItem="XNX-ym-6iT" firstAttribute="leading" secondItem="UXC-wB-nb2" secondAttribute="leading" constant="30" id="jUZ-Lu-ckA"/>
+                            <constraint firstItem="2kh-hv-P8D" firstAttribute="centerX" secondItem="cD4-91-DrL" secondAttribute="centerX" id="mPq-HQ-sav"/>
+                            <constraint firstItem="2kh-hv-P8D" firstAttribute="height" secondItem="cD4-91-DrL" secondAttribute="height" multiplier="0.1" id="rWp-vh-TyJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UXC-wB-nb2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iFd-kh-Tc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="930" y="173"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="mobilicard_logo" width="333" height="67"/>
+    </resources>
 </document>
