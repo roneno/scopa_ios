@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol LoginInteractorProtocol: class {
+    func sendRequestForSMS(phoneNumber: String)
+}
