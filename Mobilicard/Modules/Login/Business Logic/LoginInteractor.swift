@@ -25,14 +25,13 @@ final class LoginInteractor: LoginInteractorProtocol {
         
         let session = URLSession.shared
         session.dataTask(with: request) { (data, responce, error) in
-            if let responce = responce {
-                print(responce)
-            }
             
             guard let data = data else { return }
             do {
                 let serverResponce = try JSONDecoder().decode(ServerResponce.self, from: data)
-                print(serverResponce)
+                if serverResponce.error! == 0 {
+                    print(serverResponce.message!)
+                }
             } catch {
                 print(error)
             }
