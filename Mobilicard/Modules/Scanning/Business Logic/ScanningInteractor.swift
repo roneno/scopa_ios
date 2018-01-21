@@ -9,10 +9,12 @@
 import Foundation
 import CoreBluetooth
 
+var peripherals: CBPeripheral?
+
 final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
     
     var centralManager: CBCentralManager?
-    var peripherals = Array<CBPeripheral>()
+//    var peripherals = Array<CBPeripheral>()
     
     func searchForScopos() {
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
@@ -31,8 +33,11 @@ extension ScanningInteractor: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        peripherals.append(peripheral)
-        print(peripheral)
+        if peripheral.name == "Scopos"{
+            peripherals = peripheral
+        print(peripherals!)
+            centralManager?.stopScan()
+        }
 
     }
 }

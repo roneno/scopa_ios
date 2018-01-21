@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Login RequestSMS View Controller-->
         <scene sceneID="hII-y8-a2a">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tit-IO-cOy" customClass="LoginViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tit-IO-cOy" customClass="LoginRequestSMSViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xCP-hm-fMd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="sendSMS:" destination="tit-IO-cOy" eventType="touchUpInside" id="gpr-dv-lol"/>
-                                            <segue destination="VTZ-zR-C3h" kind="show" id="EXm-ti-Lp2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -69,17 +68,19 @@
                         <viewLayoutGuide key="safeArea" id="3qw-pT-vTH"/>
                     </view>
                     <connections>
+                        <outlet property="notificationLabel" destination="GMP-HU-VKH" id="k9N-D3-yxp"/>
                         <outlet property="phoneNumber" destination="Wvn-cg-0cd" id="FLt-ve-50r"/>
+                        <segue destination="VTZ-zR-C3h" kind="show" identifier="showLoginVerifyOTP" id="GYc-5j-HEV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ci0-r3-esc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124" y="173.16341829085459"/>
         </scene>
-        <!--View Controller-->
+        <!--Login VerifyOTP View Controller-->
         <scene sceneID="Mlu-Zc-td7">
             <objects>
-                <viewController id="VTZ-zR-C3h" sceneMemberID="viewController">
+                <viewController id="VTZ-zR-C3h" customClass="LoginVerifyOTPViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cD4-91-DrL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,11 +101,14 @@
                                         <rect key="frame" x="105.5" y="40.5" width="104" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0P-ef-Cw5">
                                         <rect key="frame" x="114" y="90.5" width="87" height="30"/>
                                         <state key="normal" title="Resend SMS"/>
+                                        <connections>
+                                            <action selector="dismissScreen:" destination="VTZ-zR-C3h" eventType="touchUpInside" id="1dN-jm-8nH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -122,6 +126,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UXC-wB-nb2"/>
                     </view>
+                    <connections>
+                        <outlet property="digitCodeField" destination="ZQ1-RE-zLE" id="jlS-bz-0cw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iFd-kh-Tc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

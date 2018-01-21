@@ -13,13 +13,14 @@ final class LoginWireframe: LoginWireframeProtocol {
     static let sharedInstance = LoginWireframe()
     fileprivate init() {}
     
-    var loginScreenViewController: LoginViewController?
+    var loginScreenViewController: LoginRequestSMSViewController?
+    var loginScreenVerificationViewController: LoginVerifyOTPViewController?
     var window: UIWindow?
     
     func presentLoginScreenViewControllerInWindow() {
-        let loginScreenViewController = UIStoryboard.init(name: Constants.loginStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.loginStoryboardIdentifier) as? LoginViewController
+        let loginScreenViewController = UIStoryboard.init(name: Constants.loginStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.loginStoryboardIdentifier) as? LoginRequestSMSViewController
         self.loginScreenViewController = loginScreenViewController
-        self.loginScreenViewController?.navigation = self
+        self.loginScreenVerificationViewController?.navigation = self
         self.window?.rootViewController = loginScreenViewController
         self.window?.makeKeyAndVisible()
     }

@@ -10,9 +10,11 @@ import Foundation
 
 final class LoginInteractor: LoginInteractorProtocol {
     
-    func sendRequestForSMS(phoneNumber: String) {
+    func sendRequestForSMS(phoneNumber: String) -> String? {
         
-        guard let requestSMSURL = URL(string: Constants.requestSMSURL) else { return }
+        var requestSMSResponse: String?
+        
+        guard let requestSMSURL = URL(string: Constants.requestSMSURL) else { return  nil}
         
         let parameters = ["password" : Constants.applicationID, "mobile_number": phoneNumber]
         var request = URLRequest(url: requestSMSURL)
@@ -20,7 +22,7 @@ final class LoginInteractor: LoginInteractorProtocol {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil }
         request.httpBody = hhtpBody
         
         let session = URLSession.shared
@@ -28,23 +30,66 @@ final class LoginInteractor: LoginInteractorProtocol {
             
             guard let data = data else { return }
             do {
-                let serverResponce = try JSONDecoder().decode(ServerResponce.self, from: data)
-                if serverResponce.error! == 0 {
-                    print(serverResponce.message!)
-                }
+                let serverResponce = try JSONDecoder().decode(RequestSMSResponce.self, from: data)
+                
+                requestSMSResponse = serverResponce.message
             } catch {
-                print(error)
+                requestSMSResponse = error.localizedDescription
             }
             }.resume()
+        
+        return requestSMSResponse
     }
     
-    private struct ServerResponce: Decodable {
+    func verifyOTP(otp: Int) -> String? {
+        
+        var verifyOTPResponce: String?
+        
+        guard let verifyOTPURL = URL(string: Constants.verifyOTPURL) else { return nil }
+        
+        let parameters = ["otp" : otp]
+        var request = URLRequest(url: verifyOTPURL)
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
+        request.httpBody = hhtpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, responce, error) in
+
+            guard let data = data else { return }
+            do {
+                
+                let serverResponce = try JSONDecoder().decode(VerifySMSResponce.self, from: data)
+                
+                DispatchQueue.main.async {
+                verifyOTPResponce = serverResponce.message
+                }
+            }
+            catch {
+                verifyOTPResponce = error.localizedDescription
+            }
+            }.resume()
+        
+        return verifyOTPResponce
+    }
+    
+    private struct RequestSMSResponce: Decodable {
         var error: Int?
         var message: String?
     }
     
+    private struct VerifySMSResponce: Decodable {
+        var error: Int?
+        var message: String?
+        var mobile: Int?
+    }
+    
     private struct Constants {
         static let requestSMSURL = "https://vend.mobilicard.com/pages/do_sms_request.php"
+        static let verifyOTPURL = "https://vend.mobilicard.com/pages/verify_otp.php"
         static let applicationID = "!dneviliboM@"
     }
 }

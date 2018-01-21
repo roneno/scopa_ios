@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03450C42012309700F7DFCF /* LoginVerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */; };
 		A0501CB3200F5DEA00273302 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */; };
 		A0EAD86E200CF59A002E7699 /* HomeIteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */; };
 		A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2611200C9A14009420E4 /* AppDelegate.swift */; };
@@ -25,7 +26,7 @@
 		A0FE263E200CA448009420E4 /* TechSupport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE263D200CA448009420E4 /* TechSupport.storyboard */; };
 		A0FE2640200CA457009420E4 /* TechSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE263F200CA457009420E4 /* TechSupportViewController.swift */; };
 		A0FE2643200CA489009420E4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FE2642200CA489009420E4 /* Login.storyboard */; };
-		A0FE2645200CA494009420E4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2644200CA494009420E4 /* LoginViewController.swift */; };
+		A0FE2645200CA494009420E4 /* LoginRequestSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2644200CA494009420E4 /* LoginRequestSMSViewController.swift */; };
 		A0FE2647200CA6BC009420E4 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2646200CA6BC009420E4 /* RootWireframe.swift */; };
 		A0FE2651200CB947009420E4 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2650200CB947009420E4 /* LoginWireframe.swift */; };
 		A0FE2653200CB956009420E4 /* LoginWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2652200CB956009420E4 /* LoginWireframeProtocol.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVerifyOTPViewController.swift; sourceTree = "<group>"; };
 		A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE260E200C9A13009420E4 /* Mobilicard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobilicard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +75,7 @@
 		A0FE263D200CA448009420E4 /* TechSupport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TechSupport.storyboard; sourceTree = "<group>"; };
 		A0FE263F200CA457009420E4 /* TechSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechSupportViewController.swift; sourceTree = "<group>"; };
 		A0FE2642200CA489009420E4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		A0FE2644200CA494009420E4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A0FE2644200CA494009420E4 /* LoginRequestSMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestSMSViewController.swift; sourceTree = "<group>"; };
 		A0FE2646200CA6BC009420E4 /* RootWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		A0FE2650200CB947009420E4 /* LoginWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
 		A0FE2652200CB956009420E4 /* LoginWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframeProtocol.swift; sourceTree = "<group>"; };
@@ -323,7 +325,8 @@
 			isa = PBXGroup;
 			children = (
 				A0FE2642200CA489009420E4 /* Login.storyboard */,
-				A0FE2644200CA494009420E4 /* LoginViewController.swift */,
+				A0FE2644200CA494009420E4 /* LoginRequestSMSViewController.swift */,
+				A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -521,7 +524,7 @@
 				A0FE2657200CB98A009420E4 /* TechSupportWireframeProtocol.swift in Sources */,
 				A0FE263B200CA40C009420E4 /* PrivacyPolicyViewController.swift in Sources */,
 				A0FE2653200CB956009420E4 /* LoginWireframeProtocol.swift in Sources */,
-				A0FE2645200CA494009420E4 /* LoginViewController.swift in Sources */,
+				A0FE2645200CA494009420E4 /* LoginRequestSMSViewController.swift in Sources */,
 				A0FE2686200CBE5B009420E4 /* LoginInteractorProtocol.swift in Sources */,
 				A0FE265B200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift in Sources */,
 				A0FE2659200CB99F009420E4 /* PrivacyPolicyWireframe.swift in Sources */,
@@ -541,6 +544,7 @@
 				A0FE2667200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift in Sources */,
 				A0FE2683200CBE41009420E4 /* LoginInteractor.swift in Sources */,
 				A0FE265F200CBA0B009420E4 /* AboutWireframeProtocol.swift in Sources */,
+				A03450C42012309700F7DFCF /* LoginVerifyOTPViewController.swift in Sources */,
 				A0FE266D200CBB2F009420E4 /* HomeWireframe.swift in Sources */,
 				A0FE266F200CBB40009420E4 /* HomeWireframeProtocol.swift in Sources */,
 			);
@@ -684,7 +688,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Mobilicard/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vb.Test.Mobilicard;
+				PRODUCT_BUNDLE_IDENTIFIER = vsevolodban.Mobilicard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -700,7 +704,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Mobilicard/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vb.Test.Mobilicard;
+				PRODUCT_BUNDLE_IDENTIFIER = vsevolodban.Mobilicard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
