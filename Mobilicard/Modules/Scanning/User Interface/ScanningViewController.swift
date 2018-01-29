@@ -9,15 +9,41 @@
 import UIKit
 
 final class ScanningViewController: UIViewController {
-    @IBOutlet var porgressView: UIView!
     var interactor: ScanningInteractor?
     var navigation: ScanningWireframe?
     
+    var fractionalProgress:Float = 0
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        runTimer()
         search()
         if peripherals != nil {
             showAlert()
+        }
+    }
+    
+    var counter:Int = 20 {
+        didSet {
+            if counter == 0 {
+                dismiss(animated: true, completion: nil)
+            }
+            fractionalProgress += 0.05
+            progressView.setProgress(fractionalProgress, animated: true)
+        }
+    }
+    
+    var timer = Timer()
+    
+    @objc func updateTimer() {
+        counter -= 1
+    }
+    
+    func runTimer() {
+        if counter != 0 {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         }
     }
     

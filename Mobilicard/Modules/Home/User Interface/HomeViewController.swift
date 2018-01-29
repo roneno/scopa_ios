@@ -37,10 +37,36 @@ class HomeViewController: UIViewController {
             showHideTapped = !showHideTapped
         }
     }
+
+    @IBAction func showPaymentScreen(_ sender: UIButton) {
+        self.navigation = HomeWireframe()
+        self.navigation?.homeScreenViewController = self
+        self.navigation?.presentPaymentScreen()
+    }
     @IBAction func searchDevice(_ sender: UIButton) {
+        
+        if isPaymentMethodEntered {
         self.navigation = HomeWireframe()
         self.navigation?.homeScreenViewController = self
         self.navigation?.presentScanningScreen()
+        } else {
+            showAlert()
+        }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Payment metod not set", message: "Please add payment method", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Set Payment Method", style: .destructive, handler: { (action) in
+            self.goToPayment()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func goToPayment() {
+        self.navigation = HomeWireframe()
+        self.navigation?.homeScreenViewController = self
+        self.navigation?.presentPaymentScreen()
     }
 }
 

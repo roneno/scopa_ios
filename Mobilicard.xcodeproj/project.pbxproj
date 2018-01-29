@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A03450C42012309700F7DFCF /* LoginVerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */; };
+		A0397387201FA37B0094CD17 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0397386201FA37B0094CD17 /* Constants.swift */; };
+		A04F1ED7201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04F1ED6201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift */; };
 		A0501CB3200F5DEA00273302 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */; };
 		A0EAD86E200CF59A002E7699 /* HomeIteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */; };
 		A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2611200C9A14009420E4 /* AppDelegate.swift */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVerifyOTPViewController.swift; sourceTree = "<group>"; };
+		A0397386201FA37B0094CD17 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A04F1ED6201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodEnterViewController.swift; sourceTree = "<group>"; };
 		A0501CB2200F5DEA00273302 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A0EAD86D200CF59A002E7699 /* HomeIteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE260E200C9A13009420E4 /* Mobilicard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobilicard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0397385201FA3540094CD17 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A0397386201FA37B0094CD17 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		A0501CB1200F5DE900273302 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +328,7 @@
 		A0FE2671200CBC85009420E4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A0397385201FA3540094CD17 /* Constants */,
 				A0FE2626200CA07F009420E4 /* Data Store */,
 			);
 			path = Common;
@@ -363,6 +376,7 @@
 			children = (
 				A0FE262E200CA2FB009420E4 /* PaymentMethod.storyboard */,
 				A0FE2630200CA30D009420E4 /* PaymentMethodViewController.swift */,
+				A04F1ED6201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -532,6 +546,7 @@
 				A0FE2636200CA356009420E4 /* AboutViewController.swift in Sources */,
 				A0FE265D200CB9E0009420E4 /* AboutWireframe.swift in Sources */,
 				A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */,
+				A04F1ED7201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift in Sources */,
 				A0FE2690200CBECD009420E4 /* ScanningInteractor.swift in Sources */,
 				A0FE2694200CBEE4009420E4 /* HomeInteractor.swift in Sources */,
 				A0FE266B200CBB10009420E4 /* ScanningWireframeProtocol.swift in Sources */,
@@ -547,6 +562,7 @@
 				A03450C42012309700F7DFCF /* LoginVerifyOTPViewController.swift in Sources */,
 				A0FE266D200CBB2F009420E4 /* HomeWireframe.swift in Sources */,
 				A0FE266F200CBB40009420E4 /* HomeWireframeProtocol.swift in Sources */,
+				A0397387201FA37B0094CD17 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

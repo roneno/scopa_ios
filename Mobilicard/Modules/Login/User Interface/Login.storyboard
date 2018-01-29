@@ -20,28 +20,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobilicard_logo" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-YV-Bxx">
-                                <rect key="frame" x="21.5" y="133.5" width="333" height="67"/>
+                                <rect key="frame" x="20.5" y="133.5" width="333" height="67"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="geW-oF-GUj">
-                                <rect key="frame" x="20" y="264.5" width="335" height="136.5"/>
+                                <rect key="frame" x="20" y="287" width="335" height="92"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Phone Number for Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GMP-HU-VKH">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wvn-cg-0cd">
-                                        <rect key="frame" x="0.0" y="40.5" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-OQ-igu">
-                                        <rect key="frame" x="0.0" y="90.5" width="335" height="46"/>
-                                        <color key="backgroundColor" red="0.3458178734646008" green="1" blue="0.3621585982785972" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <state key="normal" title="Send me SMS"/>
+                                        <rect key="frame" x="0.0" y="50" width="335" height="42"/>
+                                        <color key="backgroundColor" red="0.67618083760608894" green="0.72529007849959548" blue="0.29206304526138832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Send me SMS">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -53,12 +49,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobilicard will send tou an SMS to verify your phone number. Please enter your mobile number:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GMP-HU-VKH">
+                                <rect key="frame" x="20" y="200" width="335" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="GMP-HU-VKH" firstAttribute="leading" secondItem="3qw-pT-vTH" secondAttribute="leading" constant="20" id="32X-9J-0k9"/>
                             <constraint firstItem="geW-oF-GUj" firstAttribute="centerX" secondItem="xCP-hm-fMd" secondAttribute="centerX" id="3e2-gD-ryw"/>
+                            <constraint firstItem="GMP-HU-VKH" firstAttribute="centerY" secondItem="xCP-hm-fMd" secondAttribute="centerY" multiplier="0.7" id="9H1-Do-GrN"/>
                             <constraint firstItem="bqN-YV-Bxx" firstAttribute="centerY" secondItem="xCP-hm-fMd" secondAttribute="centerY" multiplier="0.5" id="OKU-jp-Iux"/>
+                            <constraint firstItem="GMP-HU-VKH" firstAttribute="centerX" secondItem="xCP-hm-fMd" secondAttribute="centerX" id="QTG-cx-Ayj"/>
                             <constraint firstItem="geW-oF-GUj" firstAttribute="centerY" secondItem="xCP-hm-fMd" secondAttribute="centerY" id="SdO-jc-NS6"/>
+                            <constraint firstItem="3qw-pT-vTH" firstAttribute="trailing" secondItem="GMP-HU-VKH" secondAttribute="trailing" constant="20" id="Tgr-Di-xWY"/>
+                            <constraint firstItem="GMP-HU-VKH" firstAttribute="height" secondItem="bqN-YV-Bxx" secondAttribute="height" id="VVm-W6-088"/>
                             <constraint firstItem="geW-oF-GUj" firstAttribute="leading" secondItem="3qw-pT-vTH" secondAttribute="leading" constant="20" id="aDb-AX-T3w"/>
                             <constraint firstItem="bqN-YV-Bxx" firstAttribute="width" secondItem="xCP-hm-fMd" secondAttribute="width" multiplier="0.888" id="gty-oS-6BP"/>
                             <constraint firstItem="bqN-YV-Bxx" firstAttribute="centerX" secondItem="xCP-hm-fMd" secondAttribute="centerX" id="ozL-xO-KTo"/>
@@ -89,22 +96,16 @@
                                 <rect key="frame" x="21" y="133.5" width="333" height="67"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XNX-ym-6iT">
-                                <rect key="frame" x="30" y="273.5" width="315" height="120.5"/>
+                                <rect key="frame" x="30" y="294" width="315" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Verification Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b08-dD-1T5">
-                                        <rect key="frame" x="42" y="0.0" width="231" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5-Digit Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ1-RE-zLE">
-                                        <rect key="frame" x="105.5" y="40.5" width="104" height="30"/>
+                                        <rect key="frame" x="105.5" y="0.0" width="104" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0P-ef-Cw5">
-                                        <rect key="frame" x="114" y="90.5" width="87" height="30"/>
+                                        <rect key="frame" x="114" y="50" width="87" height="30"/>
                                         <state key="normal" title="Resend SMS"/>
                                         <connections>
                                             <action selector="dismissScreen:" destination="VTZ-zR-C3h" eventType="touchUpInside" id="1dN-jm-8nH"/>
@@ -112,16 +113,27 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for automatic SMS verification sent to your phone number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="b08-dD-1T5">
+                                <rect key="frame" x="20" y="200" width="335" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="b08-dD-1T5" firstAttribute="centerY" secondItem="cD4-91-DrL" secondAttribute="centerY" multiplier="0.7" id="2Lz-2f-ZiX"/>
                             <constraint firstItem="2kh-hv-P8D" firstAttribute="centerY" secondItem="cD4-91-DrL" secondAttribute="centerY" multiplier="0.5" id="Dtg-5W-8A9"/>
                             <constraint firstItem="XNX-ym-6iT" firstAttribute="centerY" secondItem="cD4-91-DrL" secondAttribute="centerY" id="E5N-HZ-VKa"/>
                             <constraint firstItem="XNX-ym-6iT" firstAttribute="centerX" secondItem="cD4-91-DrL" secondAttribute="centerX" id="Krf-Ck-JQ9"/>
                             <constraint firstItem="UXC-wB-nb2" firstAttribute="trailing" secondItem="XNX-ym-6iT" secondAttribute="trailing" constant="30" id="R9f-kz-AAy"/>
+                            <constraint firstItem="UXC-wB-nb2" firstAttribute="trailing" secondItem="b08-dD-1T5" secondAttribute="trailing" constant="20" id="arJ-oU-QfU"/>
                             <constraint firstItem="2kh-hv-P8D" firstAttribute="width" secondItem="cD4-91-DrL" secondAttribute="width" multiplier="0.888" id="bfi-YR-5Eg"/>
+                            <constraint firstItem="b08-dD-1T5" firstAttribute="height" secondItem="2kh-hv-P8D" secondAttribute="height" id="fA5-Bn-nVO"/>
                             <constraint firstItem="XNX-ym-6iT" firstAttribute="leading" secondItem="UXC-wB-nb2" secondAttribute="leading" constant="30" id="jUZ-Lu-ckA"/>
                             <constraint firstItem="2kh-hv-P8D" firstAttribute="centerX" secondItem="cD4-91-DrL" secondAttribute="centerX" id="mPq-HQ-sav"/>
+                            <constraint firstItem="b08-dD-1T5" firstAttribute="centerX" secondItem="cD4-91-DrL" secondAttribute="centerX" id="plF-Bj-5GD"/>
+                            <constraint firstItem="b08-dD-1T5" firstAttribute="leading" secondItem="UXC-wB-nb2" secondAttribute="leading" constant="20" id="qan-4V-cGQ"/>
                             <constraint firstItem="2kh-hv-P8D" firstAttribute="height" secondItem="cD4-91-DrL" secondAttribute="height" multiplier="0.1" id="rWp-vh-TyJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UXC-wB-nb2"/>
@@ -132,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iFd-kh-Tc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="173"/>
+            <point key="canvasLocation" x="928.79999999999995" y="172.26386806596702"/>
         </scene>
     </scenes>
     <resources>

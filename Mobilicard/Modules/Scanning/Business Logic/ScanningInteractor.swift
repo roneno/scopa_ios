@@ -33,7 +33,7 @@ extension ScanningInteractor: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if peripheral.name == "Scopos"{
+        if peripheral.name == "scopos"{
             peripherals = peripheral
         print(peripherals!)
             centralManager?.stopScan()

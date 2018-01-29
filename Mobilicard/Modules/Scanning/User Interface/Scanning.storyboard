@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,20 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nSG-fQ-HAU">
-                                <rect key="frame" x="10" y="322.5" width="355" height="22.5"/>
-                                <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1dR-72-k5q">
-                                        <rect key="frame" x="6" y="0.0" width="343" height="2"/>
-                                    </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for machine near you..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBH-Zz-Mgf">
-                                        <rect key="frame" x="49.5" y="2" width="256" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dR-72-k5q">
+                                <rect key="frame" x="10" y="332.5" width="355" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="jXp-wh-IZl"/>
+                                </constraints>
+                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNa-5W-SbT">
                                 <rect key="frame" x="15" y="20" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,18 +33,30 @@
                                     <action selector="dismiss:" destination="PDl-Mc-vGI" eventType="touchUpInside" id="BfF-SB-U63"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for machine near you..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBH-Zz-Mgf">
+                                <rect key="frame" x="59" y="340" width="256" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="6PO-fK-ysB"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="P0V-cg-Bo4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nSG-fQ-HAU" firstAttribute="centerY" secondItem="7b9-u8-cgU" secondAttribute="centerY" id="8OX-Nc-yWi"/>
-                            <constraint firstItem="nSG-fQ-HAU" firstAttribute="leading" secondItem="7d4-sE-tGF" secondAttribute="leading" constant="10" id="IPg-Et-lHW"/>
-                            <constraint firstItem="7d4-sE-tGF" firstAttribute="trailing" secondItem="nSG-fQ-HAU" secondAttribute="trailing" constant="10" id="SME-T7-swe"/>
-                            <constraint firstItem="nSG-fQ-HAU" firstAttribute="centerX" secondItem="7b9-u8-cgU" secondAttribute="centerX" id="Z7F-sI-DB6"/>
+                            <constraint firstItem="GBH-Zz-Mgf" firstAttribute="centerY" secondItem="7b9-u8-cgU" secondAttribute="centerY" multiplier="1.05" id="9Z2-0S-nvM"/>
+                            <constraint firstAttribute="trailing" secondItem="1dR-72-k5q" secondAttribute="trailing" constant="10" id="BLW-dP-hwv"/>
+                            <constraint firstItem="1dR-72-k5q" firstAttribute="leading" secondItem="7b9-u8-cgU" secondAttribute="leading" constant="10" id="WHV-EP-8Pa"/>
+                            <constraint firstItem="1dR-72-k5q" firstAttribute="centerY" secondItem="7b9-u8-cgU" secondAttribute="centerY" id="WHu-H9-akH"/>
+                            <constraint firstItem="GBH-Zz-Mgf" firstAttribute="centerX" secondItem="7b9-u8-cgU" secondAttribute="centerX" id="gPF-mu-I1G"/>
+                            <constraint firstItem="1dR-72-k5q" firstAttribute="centerX" secondItem="7b9-u8-cgU" secondAttribute="centerX" id="ggh-WR-ItA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7d4-sE-tGF"/>
                     </view>
                     <connections>
-                        <outlet property="porgressView" destination="7b9-u8-cgU" id="KXW-NY-Evl"/>
+                        <outlet property="progressView" destination="1dR-72-k5q" id="fcZ-Em-1Tg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVu-Sk-1ys" userLabel="First Responder" sceneMemberID="firstResponder"/>

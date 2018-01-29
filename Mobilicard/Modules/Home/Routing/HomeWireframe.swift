@@ -19,8 +19,17 @@ final class HomeWireframe: HomeWireframeProtocol {
         self.homeScreenViewController?.present(scanningViewController!, animated: true, completion: nil)
     }
     
+    func presentPaymentScreen() {
+        let paymentViewController = UIStoryboard.init(name: Constants.paymentStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.paymentStoryboardIdentifier) as? PaymentMethodViewController
+        
+        self.homeScreenViewController?.present(paymentViewController!, animated: true, completion: nil)
+    }
+    
+    
     private struct Constants {
         static let scanningStoryboardName = "Scanning"
         static let scanningStoryboardIdentifier = "ScanningViewController"
+        static let paymentStoryboardName = "PaymentMethod"
+        static let paymentStoryboardIdentifier = "PaymentMethodViewController"
     }
 }

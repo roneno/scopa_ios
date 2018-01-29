@@ -16,7 +16,7 @@ final class LoginRequestSMSViewController: UIViewController {
     
     @IBAction func sendSMS(_ sender: UIButton) {
         interactor = LoginInteractor()
-        if let phoneNumber = phoneNumber.text, phoneNumber.count >= 10 {
+        if let phoneNumber = phoneNumber.text, phoneNumber.count >= 10, phoneNumber.count <= 12{
             self.interactor?.sendRequestForSMS(phoneNumber: phoneNumber)
             performSegue(withIdentifier: "showLoginVerifyOTP", sender: self)
         } else {
