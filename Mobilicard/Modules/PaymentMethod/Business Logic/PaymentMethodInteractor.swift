@@ -8,20 +8,31 @@
 
 import Foundation
 
+protocol PaymentMethodDelegate {
+    func paymentMethodVerificationResponce(responce: Int)
+}
+
 class PaymentMethodInteractor {
-    func verifyPaymentMethod(otp: Int) -> String? {
+    
+    var delegate: PaymentMethodDelegate?
+    
+    func verifyPaymentMethod() {
         
-        var verifyPaymentMethodResponce: String?
+        guard let verifyPaymentMethodUrl = URL(string: Constants.cardRegistrationUrl) else { return }
         
-        guard let verifyOTPURL = URL(string: Constants.verifyOTPURL) else { return nil }
-        
-        let parameters = ["otp" : otp]
-        var request = URLRequest(url: verifyOTPURL)
+        let parameters = ["password" : Constants.applicationID,
+                          "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile NUmber"),
+                          "card_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Number"),
+                          "expiration_date" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Expiration Date"),
+                          "cvv" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Cvv"),
+                          "first_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card First Name"),
+                          "last_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Last Name")]
+        var request = URLRequest(url: verifyPaymentMethodUrl)
         
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
+        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         request.httpBody = hhtpBody
         
         let session = URLSession.shared
@@ -31,17 +42,12 @@ class PaymentMethodInteractor {
             do {
                 
                 let serverResponce = try JSONDecoder().decode(VerifyPaymentMethodResponce.self, from: data)
-                
-                DispatchQueue.main.async {
-                    verifyPaymentMethodResponce = serverResponce.message
-                }
+
+                self.delegate?.paymentMethodVerificationResponce(responce: serverResponce.error!)
             }
             catch {
-                verifyPaymentMethodResponce = error.localizedDescription
             }
             }.resume()
-        
-        return verifyPaymentMethodResponce
     }
     
     private struct VerifyPaymentMethodResponce: Decodable {
@@ -50,8 +56,7 @@ class PaymentMethodInteractor {
     }
     
     private struct Constants {
-        static let requestSMSURL = "https://vend.mobilicard.com/pages/do_sms_request.php"
-        static let verifyOTPURL = "https://vend.mobilicard.com/pages/verify_otp.php"
+        static let cardRegistrationUrl = "https://vend.mobilicard.com/pages/do_card_registration.php"
         static let applicationID = "!dneviliboM@"
     }
 }

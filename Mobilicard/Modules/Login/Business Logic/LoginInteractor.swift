@@ -8,13 +8,17 @@
 
 import Foundation
 
+protocol RequestResponceDelegate: class {
+    func getResponceMessage(responceMessage: String, errorNumber: Int)
+}
+
 final class LoginInteractor: LoginInteractorProtocol {
     
-    func sendRequestForSMS(phoneNumber: String) -> String? {
+    weak var loginDelegate: RequestResponceDelegate?
+    
+    func sendRequestForSMS(phoneNumber: String) {
         
-        var requestSMSResponse: String?
-        
-        guard let requestSMSURL = URL(string: Constants.requestSMSURL) else { return  nil}
+        guard let requestSMSURL = URL(string: Constants.requestSMSURL) else { return }
         
         let parameters = ["password" : Constants.applicationID, "mobile_number": phoneNumber]
         var request = URLRequest(url: requestSMSURL)
@@ -22,30 +26,25 @@ final class LoginInteractor: LoginInteractorProtocol {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil }
+        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         request.httpBody = hhtpBody
         
         let session = URLSession.shared
         session.dataTask(with: request) { (data, responce, error) in
             
-            guard let data = data else { return }
-            do {
-                let serverResponce = try JSONDecoder().decode(RequestSMSResponce.self, from: data)
-                
-                requestSMSResponse = serverResponce.message
-            } catch {
-                requestSMSResponse = error.localizedDescription
-            }
+//            guard let data = data else { return }
+//            do {
+//                let serverResponce = try JSONDecoder().decode(RequestSMSResponce.self, from: data)
+//
+//            } catch {
+//                print(error.localizedDescription)
+//            }
             }.resume()
-        
-        return requestSMSResponse
     }
     
-    func verifyOTP(otp: Int) -> String? {
+    func verifyOTP(otp: Int){
         
-        var verifyOTPResponce: String?
-        
-        guard let verifyOTPURL = URL(string: Constants.verifyOTPURL) else { return nil }
+        guard let verifyOTPURL = URL(string: Constants.verifyOTPURL) else { return }
         
         let parameters = ["otp" : otp]
         var request = URLRequest(url: verifyOTPURL)
@@ -53,7 +52,7 @@ final class LoginInteractor: LoginInteractorProtocol {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return nil}
+        guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         request.httpBody = hhtpBody
         
         let session = URLSession.shared
@@ -64,16 +63,15 @@ final class LoginInteractor: LoginInteractorProtocol {
                 
                 let serverResponce = try JSONDecoder().decode(VerifySMSResponce.self, from: data)
                 
-                DispatchQueue.main.async {
-                verifyOTPResponce = serverResponce.message
+                    if let responceMessage = serverResponce.message,
+                        let errorMessage = serverResponce.error {
+                        self.loginDelegate?.getResponceMessage(responceMessage: responceMessage, errorNumber: errorMessage)
                 }
             }
             catch {
-                verifyOTPResponce = error.localizedDescription
+                self.loginDelegate?.getResponceMessage(responceMessage: error.localizedDescription, errorNumber: -1)
             }
             }.resume()
-        
-        return verifyOTPResponce
     }
     
     private struct RequestSMSResponce: Decodable {

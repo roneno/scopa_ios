@@ -9,6 +9,6 @@
 import Foundation
 
 protocol LoginInteractorProtocol: class {
-    func sendRequestForSMS(phoneNumber: String) -> String?
-    func verifyOTP(otp: Int) -> String?
+    func sendRequestForSMS(phoneNumber: String)
+    func verifyOTP(otp: Int)
 }

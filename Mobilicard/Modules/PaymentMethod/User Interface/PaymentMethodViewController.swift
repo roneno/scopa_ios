@@ -12,15 +12,14 @@ class PaymentMethodViewController: UIViewController {
     
     @IBOutlet weak var paymentMethodStatus: UILabel!
     @IBOutlet weak var addRemoveButton: UIButton!
-    @IBAction func goHome(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        paymentMethodStatus.text = paymentMethodStatusText
-        addRemoveButton.titleLabel?.text = paymentMethodButtonStatusText
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let lastFourCreditCardDigits = MobilicardUserDefaults.shared.defaults.string(forKey: "User's Last Four Card Number Digits") {
+            paymentMethodStatus.text = "**** **** **** \(lastFourCreditCardDigits)"
+        }
     }
     
-
+    
 }

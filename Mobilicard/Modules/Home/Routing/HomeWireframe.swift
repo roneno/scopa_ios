@@ -16,13 +16,14 @@ final class HomeWireframe: HomeWireframeProtocol {
         
         let scanningViewController = UIStoryboard.init(name: Constants.scanningStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.scanningStoryboardIdentifier) as? ScanningViewController
         
-        self.homeScreenViewController?.present(scanningViewController!, animated: true, completion: nil)
+        self.homeScreenViewController?.navigationController?.pushViewController(scanningViewController!, animated: true)
+//        self.homeScreenViewController?.present(scanningViewController!, animated: true, completion: nil)
     }
     
     func presentPaymentScreen() {
         let paymentViewController = UIStoryboard.init(name: Constants.paymentStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.paymentStoryboardIdentifier) as? PaymentMethodViewController
         
-        self.homeScreenViewController?.present(paymentViewController!, animated: true, completion: nil)
+        self.homeScreenViewController?.navigationController?.pushViewController(paymentViewController!, animated: true)
     }
     
     

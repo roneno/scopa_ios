@@ -14,9 +14,17 @@ final class LoginRequestSMSViewController: UIViewController {
     @IBOutlet weak var phoneNumber: UITextField!
     var interactor: LoginInteractor?
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let mobileValue = MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number") {
+        print(mobileValue)
+        }
+    }
+    
     @IBAction func sendSMS(_ sender: UIButton) {
         interactor = LoginInteractor()
-        if let phoneNumber = phoneNumber.text, phoneNumber.count >= 10, phoneNumber.count <= 12{
+        if let phoneNumber = phoneNumber.text, phoneNumber.count >= 10, phoneNumber.count <= 12 {
+            MobilicardUserDefaults.shared.defaults.set(String(phoneNumber), forKey: "User's Mobile Number")
             self.interactor?.sendRequestForSMS(phoneNumber: phoneNumber)
             performSegue(withIdentifier: "showLoginVerifyOTP", sender: self)
         } else {

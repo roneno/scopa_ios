@@ -18,17 +18,15 @@ final class ScanningViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        interactor?.delegate = self
         runTimer()
         search()
-        if peripherals != nil {
-            showAlert()
-        }
     }
     
     var counter:Int = 20 {
         didSet {
             if counter == 0 {
-                dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
             fractionalProgress += 0.05
             progressView.setProgress(fractionalProgress, animated: true)
@@ -52,9 +50,10 @@ final class ScanningViewController: UIViewController {
         self.interactor?.searchForScopos()
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "Found Scopos", message: "Found \(peripherals?.name! ?? "not found"), ID \(String(describing: peripherals?.identifier) )", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+    func showPaymentConfirmationAlert() {
+        let alert = UIAlertController(title: "Payment Confirmation", message: "Do You approve payment to machine number ", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -63,9 +62,19 @@ final class ScanningViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    //TODO: add navigation
-    @IBAction func dismiss(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    
+}
+
+extension ScanningViewController: ScanningInterectorDelegate {
+    func didPaymentAproovmentResponce(errorNumber: Int, serverResponce: String) {
+        //Handle
     }
+    
+    func didFoundScopos() {
+        DispatchQueue.main.async {
+            self.showPaymentConfirmationAlert()
+        }
+    }
+    
     
 }

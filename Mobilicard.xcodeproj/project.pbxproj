@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95B9ACAF2025B41800E8235E /* MobilicardUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9ACAE2025B41800E8235E /* MobilicardUserDefaults.swift */; };
 		A03450C42012309700F7DFCF /* LoginVerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */; };
 		A0397387201FA37B0094CD17 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0397386201FA37B0094CD17 /* Constants.swift */; };
 		A04F1ED7201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04F1ED6201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift */; };
@@ -46,8 +47,6 @@
 		A0FE266F200CBB40009420E4 /* HomeWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE266E200CBB40009420E4 /* HomeWireframeProtocol.swift */; };
 		A0FE2683200CBE41009420E4 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2682200CBE41009420E4 /* LoginInteractor.swift */; };
 		A0FE2686200CBE5B009420E4 /* LoginInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2685200CBE5B009420E4 /* LoginInteractorProtocol.swift */; };
-		A0FE2688200CBE88009420E4 /* PrivacyPolicyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2687200CBE88009420E4 /* PrivacyPolicyInteractor.swift */; };
-		A0FE268A200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE2689200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift */; };
 		A0FE268C200CBEAC009420E4 /* PaymentMethodInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268B200CBEAC009420E4 /* PaymentMethodInteractor.swift */; };
 		A0FE268E200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268D200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift */; };
 		A0FE2690200CBECD009420E4 /* ScanningInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */; };
@@ -56,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95B9ACAE2025B41800E8235E /* MobilicardUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilicardUserDefaults.swift; sourceTree = "<group>"; };
 		A03450C32012309700F7DFCF /* LoginVerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVerifyOTPViewController.swift; sourceTree = "<group>"; };
 		A0397386201FA37B0094CD17 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A04F1ED6201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodEnterViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +97,6 @@
 		A0FE266E200CBB40009420E4 /* HomeWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframeProtocol.swift; sourceTree = "<group>"; };
 		A0FE2682200CBE41009420E4 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		A0FE2685200CBE5B009420E4 /* LoginInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorProtocol.swift; sourceTree = "<group>"; };
-		A0FE2687200CBE88009420E4 /* PrivacyPolicyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyInteractor.swift; sourceTree = "<group>"; };
-		A0FE2689200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyInteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE268B200CBEAC009420E4 /* PaymentMethodInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodInteractor.swift; sourceTree = "<group>"; };
 		A0FE268D200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodInteractorProtocol.swift; sourceTree = "<group>"; };
 		A0FE268F200CBECD009420E4 /* ScanningInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInteractor.swift; sourceTree = "<group>"; };
@@ -186,6 +184,7 @@
 		A0FE2626200CA07F009420E4 /* Data Store */ = {
 			isa = PBXGroup;
 			children = (
+				95B9ACAE2025B41800E8235E /* MobilicardUserDefaults.swift */,
 			);
 			path = "Data Store";
 			sourceTree = "<group>";
@@ -212,7 +211,6 @@
 		A0FE2637200CA3E2009420E4 /* PrivacyPolicy */ = {
 			isa = PBXGroup;
 			children = (
-				A0FE267B200CBD4E009420E4 /* Business Logic */,
 				A0FE264B200CB910009420E4 /* Routing */,
 				A0FE2674200CBCD1009420E4 /* User Interface */,
 			);
@@ -408,15 +406,6 @@
 			path = "Business Logic";
 			sourceTree = "<group>";
 		};
-		A0FE267B200CBD4E009420E4 /* Business Logic */ = {
-			isa = PBXGroup;
-			children = (
-				A0FE2687200CBE88009420E4 /* PrivacyPolicyInteractor.swift */,
-				A0FE2689200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift */,
-			);
-			path = "Business Logic";
-			sourceTree = "<group>";
-		};
 		A0FE267D200CBD96009420E4 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,19 +531,18 @@
 				A0FE2686200CBE5B009420E4 /* LoginInteractorProtocol.swift in Sources */,
 				A0FE265B200CB9BD009420E4 /* PrivatePolicyWireframeProtocol.swift in Sources */,
 				A0FE2659200CB99F009420E4 /* PrivacyPolicyWireframe.swift in Sources */,
-				A0FE2688200CBE88009420E4 /* PrivacyPolicyInteractor.swift in Sources */,
 				A0FE2636200CA356009420E4 /* AboutViewController.swift in Sources */,
 				A0FE265D200CB9E0009420E4 /* AboutWireframe.swift in Sources */,
 				A0FE2612200C9A14009420E4 /* AppDelegate.swift in Sources */,
 				A04F1ED7201924EC00EEC1C0 /* PaymentMethodEnterViewController.swift in Sources */,
 				A0FE2690200CBECD009420E4 /* ScanningInteractor.swift in Sources */,
+				95B9ACAF2025B41800E8235E /* MobilicardUserDefaults.swift in Sources */,
 				A0FE2694200CBEE4009420E4 /* HomeInteractor.swift in Sources */,
 				A0FE266B200CBB10009420E4 /* ScanningWireframeProtocol.swift in Sources */,
 				A0FE268E200CBEB6009420E4 /* PaymentMethodInteractorProtocol.swift in Sources */,
 				A0FE268C200CBEAC009420E4 /* PaymentMethodInteractor.swift in Sources */,
 				A0FE2651200CB947009420E4 /* LoginWireframe.swift in Sources */,
 				A0FE2640200CA457009420E4 /* TechSupportViewController.swift in Sources */,
-				A0FE268A200CBE95009420E4 /* PrivacyPolicyInteractorProtocol.swift in Sources */,
 				A0FE2665200CBACC009420E4 /* PaymentMethodWireframe.swift in Sources */,
 				A0FE2667200CBAE5009420E4 /* PaymentMethodWireframeProtocol.swift in Sources */,
 				A0FE2683200CBE41009420E4 /* LoginInteractor.swift in Sources */,

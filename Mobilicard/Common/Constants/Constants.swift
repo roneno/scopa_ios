@@ -7,7 +7,3 @@
 //
 
 import Foundation
-
-var isPaymentMethodEntered = false
-var paymentMethodStatusText = "No Payment Method Set"
-var paymentMethodButtonStatusText = "Add"
