@@ -35,7 +35,7 @@ extension LoginVerifyOTPViewController: UITextFieldDelegate {
         if digitCode.count == 5 {
             self.interactor = LoginInteractor()
             self.interactor?.loginDelegate = self
-            self.interactor?.verifyOTP(otp: Int(digitCode)!)
+            self.interactor?.verifyOTP(otp: digitCode)
             
             if responce != nil {
                 let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
@@ -47,7 +47,8 @@ extension LoginVerifyOTPViewController: UITextFieldDelegate {
 
 extension LoginVerifyOTPViewController: RequestResponceDelegate {
     func getResponceMessage(responceMessage: String, errorNumber: Int) {
-        if errorNumber == 1 {
+        print(responceMessage, errorNumber)
+        if errorNumber == 0 {
             DispatchQueue.main.async {
                 let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? UINavigationController
                 self.present(homeViewController!, animated: true, completion: nil)

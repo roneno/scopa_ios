@@ -18,7 +18,6 @@ final class ScanningViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        interactor?.delegate = self
         runTimer()
         search()
     }
@@ -41,19 +40,20 @@ final class ScanningViewController: UIViewController {
     
     func runTimer() {
         if counter != 0 {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         }
     }
     
     func search() {
         self.interactor = ScanningInteractor()
+        self.interactor?.delegate = self
         self.interactor?.searchForScopos()
     }
     
     func showPaymentConfirmationAlert() {
         let alert = UIAlertController(title: "Payment Confirmation", message: "Do You approve payment to machine number ", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -14,8 +14,6 @@ protocol ScanningInterectorDelegate {
     func didFoundScopos()
 }
 
-var peripherals: CBPeripheral?
-
 final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
     
     var delegate: ScanningInterectorDelegate?
@@ -74,18 +72,18 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
 
 extension ScanningInteractor: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print(central.state)
-        if (central.state == .poweredOn){
+        print(central.state.rawValue)
+        if (central.state == .poweredOn) {
             self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
         }
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if peripheral.name != "scopos"{
+        if peripheral.name == "scopos"{
             print(peripheral.readRSSI())
             print(peripheral)
-            centralManager?.stopScan()
             delegate?.didFoundScopos()
+            centralManager?.stopScan()
         }
 
     }

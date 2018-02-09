@@ -14,6 +14,7 @@ protocol RequestResponceDelegate: class {
 
 final class LoginInteractor: LoginInteractorProtocol {
     
+    
     weak var loginDelegate: RequestResponceDelegate?
     
     func sendRequestForSMS(phoneNumber: String) {
@@ -42,11 +43,11 @@ final class LoginInteractor: LoginInteractorProtocol {
             }.resume()
     }
     
-    func verifyOTP(otp: Int){
+    func verifyOTP(otp: String){
         
         guard let verifyOTPURL = URL(string: Constants.verifyOTPURL) else { return }
         
-        let parameters = ["otp" : otp]
+        let parameters = ["otp" : String(otp), "password" : Constants.applicationID]
         var request = URLRequest(url: verifyOTPURL)
         
         request.httpMethod = "POST"
@@ -82,7 +83,6 @@ final class LoginInteractor: LoginInteractorProtocol {
     private struct VerifySMSResponce: Decodable {
         var error: Int?
         var message: String?
-        var mobile: Int?
     }
     
     private struct Constants {
