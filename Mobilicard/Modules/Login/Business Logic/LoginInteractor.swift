@@ -56,6 +56,7 @@ final class LoginInteractor: LoginInteractorProtocol {
         guard let hhtpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         request.httpBody = hhtpBody
         
+        print(parameters)
         let session = URLSession.shared
         session.dataTask(with: request) { (data, responce, error) in
 

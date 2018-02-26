@@ -47,13 +47,33 @@ final class ScanningViewController: UIViewController {
     func search() {
         self.interactor = ScanningInteractor()
         self.interactor?.delegate = self
+        //        self.interactor?.paymentApprovment(dataFromScopos: "g")
         self.interactor?.searchForScopos()
     }
     
-    func showPaymentConfirmationAlert() {
-        let alert = UIAlertController(title: "Payment Confirmation", message: "Do You approve payment to machine number ", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+    func didDiconnectAllert(message: String?, err: Int) {
+        if err == 0 {
+            let alert = UIAlertController(title: "Payment Success", message: "Payment Was Successful", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if let errorMessage = message {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+        self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
+    func showPaymentConfirmationAlert(dataFromScopos: String) {
+        let price = dataFromScopos[10..<14]
+        let alert = UIAlertController(title: "Payment Confirmation", message: "Do You approve payment: \(price) to machine number ", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)
+            self.interactor?.disconnectFromScopos()
+        }))
+        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: {(alert: UIAlertAction!) in
+            self.interactor?.paymentApprovment(dataFromScopos: dataFromScopos)}))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -66,15 +86,22 @@ final class ScanningViewController: UIViewController {
 }
 
 extension ScanningViewController: ScanningInterectorDelegate {
-    func didPaymentAproovmentResponce(errorNumber: Int, serverResponce: String) {
-        //Handle
-    }
-    
-    func didFoundScopos() {
+    func paymentApprovemetnRequest(dataFromScopos: String) {
         DispatchQueue.main.async {
-            self.showPaymentConfirmationAlert()
+            self.showPaymentConfirmationAlert(dataFromScopos: dataFromScopos)
         }
     }
     
+    func didPaymentAproovmentResponce(errorNumber: Int, serverResponce: String) {
+            DispatchQueue.main.async {
+                self.didDiconnectAllert(message: serverResponce, err: errorNumber)
+            }
+    }
     
+    //Use or Delete
+    func statusToShowInAlert(message: String?) {
+        DispatchQueue.main.async {
+            self.didDiconnectAllert(message: message, err: 0)
+        }
+    }
 }

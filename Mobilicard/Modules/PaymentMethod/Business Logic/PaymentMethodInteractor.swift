@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PaymentMethodDelegate {
-    func paymentMethodVerificationResponce(responce: Int)
+    func paymentMethodVerificationResponce(responceError: Int, responceStatus: String, responceMessage: String )
 }
 
 class PaymentMethodInteractor {
@@ -21,12 +21,13 @@ class PaymentMethodInteractor {
         guard let verifyPaymentMethodUrl = URL(string: Constants.cardRegistrationUrl) else { return }
         
         let parameters = ["password" : Constants.applicationID,
-                          "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile NUmber"),
-                          "card_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Number"),
-                          "expiration_date" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Expiration Date"),
-                          "cvv" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Cvv"),
-                          "first_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card First Name"),
-                          "last_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Last Name")]
+                          "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number")!,
+                          "card_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Number")!,
+                          "expiration_date" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Expiration Date")!,
+                          "cvv" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Cvv")!,
+                          "first_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card First Name")!,
+                          "last_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Last Name")!
+        ]
         var request = URLRequest(url: verifyPaymentMethodUrl)
         
         request.httpMethod = "POST"
@@ -36,6 +37,7 @@ class PaymentMethodInteractor {
         request.httpBody = hhtpBody
         
         let session = URLSession.shared
+        print(parameters)
         session.dataTask(with: request) { (data, responce, error) in
             
             guard let data = data else { return }
@@ -43,7 +45,7 @@ class PaymentMethodInteractor {
                 
                 let serverResponce = try JSONDecoder().decode(VerifyPaymentMethodResponce.self, from: data)
 
-                self.delegate?.paymentMethodVerificationResponce(responce: serverResponce.error!)
+                self.delegate?.paymentMethodVerificationResponce(responceError: serverResponce.error!, responceStatus: serverResponce.status!, responceMessage: serverResponce.message!)
             }
             catch {
             }
@@ -53,6 +55,7 @@ class PaymentMethodInteractor {
     private struct VerifyPaymentMethodResponce: Decodable {
         var error: Int?
         var message: String?
+        var status: String?
     }
     
     private struct Constants {

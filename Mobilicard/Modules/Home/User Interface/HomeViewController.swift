@@ -57,15 +57,15 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func showPaymentScreen(_ sender: UIButton) {
-        self.navigation = HomeWireframe()
-        self.navigation?.homeScreenViewController = self
+        self.navigation = HomeWireframe.sharedInstance
+        self.navigation?.homeViewController = self
         self.navigation?.presentPaymentScreen()
     }
     @IBAction func searchDevice(_ sender: UIButton) {
         
         if MobilicardUserDefaults.shared.defaults.bool(forKey: "User Added Payment Method") {
-        self.navigation = HomeWireframe()
-        self.navigation?.homeScreenViewController = self
+        self.navigation = HomeWireframe.sharedInstance
+        self.navigation?.homeViewController = self
         self.navigation?.presentScanningScreen()
         } else {
             showAlert()
@@ -82,8 +82,8 @@ class HomeViewController: UIViewController {
     }
     
     func goToPayment() {
-        self.navigation = HomeWireframe()
-        self.navigation?.homeScreenViewController = self
+        self.navigation = HomeWireframe.sharedInstance
+        self.navigation?.homeViewController = self
         self.navigation?.presentPaymentScreen()
     }
 }

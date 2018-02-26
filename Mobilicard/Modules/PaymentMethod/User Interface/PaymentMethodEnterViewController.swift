@@ -28,9 +28,9 @@ class PaymentMethodEnterViewController: UIViewController {
     }
     
     func isValidData() {
-        if let cardNumber = cardNumber.text, cardNumber.count == 16,
-            let cvv = cvv.text, cvv.count == 3,
-            let expirationDate = expirationDate.text, expirationDate.count == 4,
+        if let cardNumber = cardNumber.text, cardNumber.count <= 16,
+            let cvv = cvv.text, cvv.count <= 5,
+            let expirationDate = expirationDate.text, expirationDate.count <= 4,
             let lastName = lastName.text, lastName.count > 0,
             let firstName = firstName.text, firstName.count > 0 {
             MobilicardUserDefaults.shared.defaults.set(true, forKey: "User Added Payment Method")
@@ -49,9 +49,11 @@ class PaymentMethodEnterViewController: UIViewController {
 }
 
 extension PaymentMethodEnterViewController: PaymentMethodDelegate {
-    func paymentMethodVerificationResponce(responce: Int) {
-        print(responce)
-        if responce != 0 {
+    func paymentMethodVerificationResponce(responceError: Int, responceStatus: String, responceMessage: String) {
+        print(responceError)
+        print(responceStatus)
+        print(responceMessage)
+        if responceError == 0 {
             DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)
             }

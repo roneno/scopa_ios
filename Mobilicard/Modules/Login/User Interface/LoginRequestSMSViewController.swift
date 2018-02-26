@@ -16,6 +16,7 @@ final class LoginRequestSMSViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if let mobileValue = MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number") {
         print(mobileValue)
         }
