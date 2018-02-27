@@ -38,13 +38,20 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
         guard let paymentApprovmentUrl = URL(string: Constants.paymentAproovmentUrl) else { return }
         
         let parameters = [
-            "password" : Constants.applicationID,
-            "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
-            "machine_id" : dataFromScopos[6..<10],
-            "machine_type" : dataFromScopos[4..<6],
-            "operator" : "woodhill",
-            "operator_id" : dataFromScopos[0..<4],
-            "cycle_price" : dataFromScopos[10..<14]
+            "password" : "!dneviliboM@",
+            "mobile_number" : "0542323420",
+            "machine_id" : "5000",
+            "machine_type" : "01",
+            "operator_id" : "0000",
+            "cycle_price": "0001"
+            
+            //            "password" : Constants.applicationID,
+            //            "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
+            //            "machine_id" : dataFromScopos[6..<10],
+            //            "machine_type" : dataFromScopos[4..<6],
+            //            "operator" : "woodhill",
+            //            "operator_id" : dataFromScopos[0..<4],
+            //            "cycle_price" : dataFromScopos[10..<14]
         ]
         var request = URLRequest(url: paymentApprovmentUrl)
         
@@ -142,8 +149,8 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
         guard let data = characteristic.value else { return }
         let stringData = String(decoding: data, as: UTF8.self)
         delegate?.paymentApprovemetnRequest(dataFromScopos: stringData)
-//        paymentApprovment(dataFromScopos: stringData)
-//        centralManager?.cancelPeripheralConnection(peripheral)
+        //        paymentApprovment(dataFromScopos: stringData)
+        //        centralManager?.cancelPeripheralConnection(peripheral)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -154,7 +161,7 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-//        delegate?.bleDisconnected()
+        //        delegate?.bleDisconnected()
     }
 }
 

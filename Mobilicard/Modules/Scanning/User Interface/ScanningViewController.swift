@@ -49,6 +49,7 @@ final class ScanningViewController: UIViewController {
         self.interactor?.delegate = self
         //        self.interactor?.paymentApprovment(dataFromScopos: "g")
         self.interactor?.searchForScopos()
+        self.interactor?.paymentApprovment(dataFromScopos: "123")
     }
     
     func didDiconnectAllert(message: String?, err: Int) {
