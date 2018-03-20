@@ -53,6 +53,7 @@ final class ScanningViewController: UIViewController {
     }
     
     func didDiconnectAllert(message: String?, err: Int) {
+        print(err)
         if err == 0 {
             let alert = UIAlertController(title: "Payment Success", message: "Payment Was Successful", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
@@ -68,13 +69,12 @@ final class ScanningViewController: UIViewController {
     }
     
     func showPaymentConfirmationAlert(dataFromScopos: String) {
-        let price = dataFromScopos[10..<14]
-        let alert = UIAlertController(title: "Payment Confirmation", message: "Do You approve payment: \(price) to machine number ", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Payment Confirmation", message: "\(dataFromScopos)", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)
             self.interactor?.disconnectFromScopos()
         }))
-        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: {(alert: UIAlertAction!) in
-            self.interactor?.paymentApprovment(dataFromScopos: dataFromScopos)}))
+//        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: {(alert: UIAlertAction!) in
+//            self.interactor?.paymentApprovment(dataFromScopos: dataFromScopos)}))
         self.present(alert, animated: true, completion: nil)
     }
     

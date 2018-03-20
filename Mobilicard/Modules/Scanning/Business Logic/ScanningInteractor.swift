@@ -37,13 +37,21 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
         
         guard let paymentApprovmentUrl = URL(string: Constants.paymentAproovmentUrl) else { return }
         
+        convertToHex()
+        
         let parameters = [
             "password" : "!dneviliboM@",
-            "mobile_number" : "0542323420",
-            "machine_id" : "5000",
-            "machine_type" : "01",
-            "operator_id" : "0000",
-            "cycle_price": "0001"
+//            "mobile_number" : "0542323420",
+//            "machine_id" : "5000",
+//            "machine_type" : "01",
+//            "operator_id" : "0000",
+//            "cycle_price": "0001"
+                        "mobile_number" : "205332DC",
+                        "machine_id" : "1388",
+                        "machine_type" : "1",
+                        "operator_id" : "0",
+                        "cycle_price": "1"
+            
             
             //            "password" : Constants.applicationID,
             //            "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
@@ -81,6 +89,10 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
             catch {
             }
             }.resume()
+    }
+    
+    private func convertToHex() {
+        
     }
     
     private struct VerifyPaymentResponce: Decodable {
@@ -133,10 +145,10 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        if let charesteristic = service.characteristics?.first {
+        if let charesteristic = service.characteristics?.last {
             peripheral.readValue(for: charesteristic)
         }
-        if let characterictic = service.characteristics?.last {
+        if let characterictic = service.characteristics?.first {
             remoteCharacteristic = characterictic
         }
     }
@@ -147,8 +159,30 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
         guard let data = characteristic.value else { return }
-        let stringData = String(decoding: data, as: UTF8.self)
-        delegate?.paymentApprovemetnRequest(dataFromScopos: stringData)
+        let bytesOperatorType = Data(bytes: [0, 1, 2, 3])
+        let bytesOperatorId = Data(bytes: [4, 5, 6, 7])
+        let bytesMachineType = Data(bytes: [8, 9, 10, 11])
+        let bytesMachineId = Data(bytes: [12, 13, 14, 15])
+        let bytesMachinePrice = Data(bytes: [16, 17, 18, 19])
+        
+        // To Hex
+        let hexOperatorType = bytesOperatorType.hexEncodedString(options: .upperCase)
+        let hexOperatorId = bytesOperatorId.hexEncodedString(options: .upperCase)
+        let hexMachineType = bytesMachineType.hexEncodedString(options: .upperCase)
+        let hexMachineId = bytesMachineId.hexEncodedString(options: .upperCase)
+        let hexMachinePrice = bytesMachinePrice.hexEncodedString(options: .upperCase)
+        
+        let hexsString = "Hex String____ Operator Type: \(hexOperatorType), OperatorId: \(hexOperatorId), Machine Type: \(hexMachineType), Machine Id: \(hexMachineId), Machine Price: \(hexMachinePrice)"
+        
+        let operatorType = Int(hexOperatorType, radix: 16)
+        let operatorId = Int(hexOperatorId, radix: 16)
+        let machineType = Int(hexMachineType, radix: 16)
+        let machineId = Int(hexMachineId, radix: 16)
+        let machinePrice = Int(hexMachinePrice, radix: 16)
+        
+        let intString = "Int String____ Operator Type: \(operatorType), OperatorId: \(operatorId), Machine Type: \(machineType), Machine Id: \(machineId), Machine Price: \(machinePrice)"
+        
+        delegate?.paymentApprovemetnRequest(dataFromScopos: hexsString + intString)
         //        paymentApprovment(dataFromScopos: stringData)
         //        centralManager?.cancelPeripheralConnection(peripheral)
     }
@@ -179,5 +213,17 @@ extension String {
         let start = index(startIndex, offsetBy: r.lowerBound)
         let end = index(startIndex, offsetBy: r.upperBound)
         return String(self[Range(start ..< end)])
+    }
+}
+
+extension Data {
+    struct HexEncodingOptions: OptionSet {
+        let rawValue: Int
+        static let upperCase = HexEncodingOptions(rawValue: 1 << 0)
+    }
+    
+    func hexEncodedString(options: HexEncodingOptions = []) -> String {
+        let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
+        return map { String(format: format, $0) }.joined()
     }
 }
