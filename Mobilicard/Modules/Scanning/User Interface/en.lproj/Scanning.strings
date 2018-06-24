@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "Searching for machine near you..."; ObjectID = "GBH-Zz-Mgf"; */
+"GBH-Zz-Mgf.text" = "Searching for machine near you...";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "tNa-5W-SbT"; */
+"tNa-5W-SbT.normalTitle" = "Cancel";

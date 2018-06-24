@@ -30,7 +30,7 @@ final class LoginRequestSMSViewController: UIViewController {
             performSegue(withIdentifier: "showLoginVerifyOTP", sender: self)
         } else {
             notificationLabel.textColor = .red
-            notificationLabel.text = "Please Enter a Valid Number"
+            notificationLabel.text = NSLocalizedString("Please Enter a Valid Number", comment: "")
             notificationLabel.textAlignment = .center
         }
     }

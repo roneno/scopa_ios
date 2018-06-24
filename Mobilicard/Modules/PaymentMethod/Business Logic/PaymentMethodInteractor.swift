@@ -9,24 +9,30 @@
 import Foundation
 
 protocol PaymentMethodDelegate {
-    func paymentMethodVerificationResponce(responceError: Int, responceStatus: String, responceMessage: String )
+    func paymentMethodVerificationResponce(title: String, responceStatus: String, success: Bool)
 }
+
+var lastFourDigitsOfCardNumber:String = ""
 
 class PaymentMethodInteractor {
     
     var delegate: PaymentMethodDelegate?
     
-    func verifyPaymentMethod() {
+    func verifyPaymentMethod(cardNumber: String, expirationDate: String, cvv: String, firstName: String, lastName: String) {
         
         guard let verifyPaymentMethodUrl = URL(string: Constants.cardRegistrationUrl) else { return }
         
+        print(MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number")!)
+        print(cvv, cardNumber, expirationDate, firstName, lastName)
+        
         let parameters = ["password" : Constants.applicationID,
+                          "operator_id": "0000",
                           "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number")!,
-                          "card_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Number")!,
-                          "expiration_date" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Expiration Date")!,
-                          "cvv" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Cvv")!,
-                          "first_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card First Name")!,
-                          "last_name" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Card Last Name")!
+                          "card_number" : cardNumber,
+                          "expiration_date" : expirationDate,
+                          "cvv" : cvv,
+                          "first_name" : firstName,
+                          "last_name" : lastName
         ]
         var request = URLRequest(url: verifyPaymentMethodUrl)
         
@@ -37,25 +43,38 @@ class PaymentMethodInteractor {
         request.httpBody = hhtpBody
         
         let session = URLSession.shared
-        print(parameters)
         session.dataTask(with: request) { (data, responce, error) in
             
             guard let data = data else { return }
             do {
                 
                 let serverResponce = try JSONDecoder().decode(VerifyPaymentMethodResponce.self, from: data)
-
-                self.delegate?.paymentMethodVerificationResponce(responceError: serverResponce.error!, responceStatus: serverResponce.status!, responceMessage: serverResponce.message!)
+                
+                if serverResponce.status == "036" {
+                    let title = NSLocalizedString("Card Registration Failed", comment: "")
+                    let messege = NSLocalizedString("Please check Exp Date and try again", comment: "")
+                    self.delegate?.paymentMethodVerificationResponce(title: title, responceStatus: messege, success: false)
+                } else if serverResponce.status == "039" || serverResponce.status == "033" {
+                    let title = NSLocalizedString("Card Registration Failed", comment: "")
+                    let messege = NSLocalizedString("Problem in card registration", comment: "")
+                    self.delegate?.paymentMethodVerificationResponce(title: title, responceStatus: messege, success: false)
+                } else {
+                    lastFourDigitsOfCardNumber = String(cardNumber.suffix(4))
+                    self.delegate?.paymentMethodVerificationResponce(title: NSLocalizedString("Success", comment: ""), responceStatus: NSLocalizedString("Card registration successful", comment: ""), success: true)
+                }
             }
-            catch {
+            catch let error{
+                print(error)
             }
             }.resume()
     }
     
     private struct VerifyPaymentMethodResponce: Decodable {
-        var error: Int?
+        var error: Bool?
         var message: String?
         var status: String?
+        var token: String?
+        var expdate: String?
     }
     
     private struct Constants {

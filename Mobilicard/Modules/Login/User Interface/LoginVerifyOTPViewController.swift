@@ -12,17 +12,38 @@ final class LoginVerifyOTPViewController: UIViewController {
     
     @IBOutlet weak var digitCodeField: UITextField!
     
+    @IBOutlet weak var resendSms: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var timer = Timer()
+    
+    var seconds = ConstantsGlobal.secondToEnableResendSMS
+    
     var interactor: LoginInteractor?
     var navigation: LoginWireframe?
     
-    var responce: String?
+//    var responce: String?
     
     @IBAction func dismissScreen(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func selector() {
+        
+        if seconds == 0 {
+            timer.invalidate()
+            resendSms.isEnabled = true
+            activityIndicator.stopAnimating()
+        } else {
+            seconds -= 1
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LoginVerifyOTPViewController.selector), userInfo: nil, repeats: true)
         digitCodeField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
     }
 }
@@ -37,18 +58,18 @@ extension LoginVerifyOTPViewController: UITextFieldDelegate {
             self.interactor?.loginDelegate = self
             self.interactor?.verifyOTP(otp: digitCode)
             
-            if responce != nil {
-                let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-                present(homeViewController!, animated: true, completion: nil)
-            }
+//            if responce == nil {
+//                let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? UINavigationController
+//            }
         }
     }
 }
 
 extension LoginVerifyOTPViewController: RequestResponceDelegate {
-    func getResponceMessage(responceMessage: String, errorNumber: Int) {
+    func getResponceMessage(responceMessage: String, errorNumber: Bool) {
         print(responceMessage, errorNumber)
-        if errorNumber == 0 {
+        
+        if !errorNumber {
             DispatchQueue.main.async {
                 let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? UINavigationController
                 self.present(homeViewController!, animated: true, completion: nil)

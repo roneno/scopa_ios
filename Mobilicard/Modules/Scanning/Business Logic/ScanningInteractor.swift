@@ -10,9 +10,11 @@ import Foundation
 import CoreBluetooth
 
 protocol ScanningInterectorDelegate {
-    func didPaymentAproovmentResponce(errorNumber: Int ,serverResponce: String)
-    func paymentApprovemetnRequest(dataFromScopos: String)
+    func didPaymentAproovmentResponce(errorNumber: Bool,serverResponce: String)
+    func paymentApprovemetnRequest(operatorType: String, operatorId: String, machineType: String, machineId: String , cyclePrice: String)
     func statusToShowInAlert(message: String?)
+    func customUserAlert()
+    func showUserNeedToSetPaymentMethodAlert()
 }
 
 final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
@@ -33,33 +35,32 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
         self.centralManager?.cancelPeripheralConnection(remotePeripheral.first!)
     }
     
-    func paymentApprovment(dataFromScopos: String) {
+    func paymentApprovment(cyclePrice: String, operatorId: String, machineType: String, machineId: String) {
         
         guard let paymentApprovmentUrl = URL(string: Constants.paymentAproovmentUrl) else { return }
         
-        convertToHex()
+        var handledOperatorId = ""
+        
+        switch operatorId.count {
+        case 1:
+            handledOperatorId = "000" + operatorId
+        case 2:
+            handledOperatorId = "00" + operatorId
+        case 3:
+            handledOperatorId = "0" + operatorId
+        default:
+            break
+        }
+        
+        print(handledOperatorId)
         
         let parameters = [
-            "password" : "!dneviliboM@",
-//            "mobile_number" : "0542323420",
-//            "machine_id" : "5000",
-//            "machine_type" : "01",
-//            "operator_id" : "0000",
-//            "cycle_price": "0001"
-                        "mobile_number" : "205332DC",
-                        "machine_id" : "1388",
-                        "machine_type" : "1",
-                        "operator_id" : "0",
-                        "cycle_price": "1"
-            
-            
-            //            "password" : Constants.applicationID,
-            //            "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
-            //            "machine_id" : dataFromScopos[6..<10],
-            //            "machine_type" : dataFromScopos[4..<6],
-            //            "operator" : "woodhill",
-            //            "operator_id" : dataFromScopos[0..<4],
-            //            "cycle_price" : dataFromScopos[10..<14]
+            "password" : Constants.applicationID,
+            "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
+            "machine_id" : machineId,
+            "machine_type" : machineType,
+            "operator_id" : handledOperatorId,
+            "cycle_price" : cyclePrice
         ]
         var request = URLRequest(url: paymentApprovmentUrl)
         
@@ -77,26 +78,28 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
                 
                 let serverResponce = try JSONDecoder().decode(VerifyPaymentResponce.self, from: data)
                 
+                print(serverResponce.message)
+                
                 self.delegate?.didPaymentAproovmentResponce(errorNumber: serverResponce.error!, serverResponce: serverResponce.message!)
                 
-                let stringToScopos = "19081965"
-                if let dataToScopos = stringToScopos.data(using: String.Encoding.utf8) {
-                    self.remotePeripheral.first?.writeValue(dataToScopos, for: self.remoteCharacteristic!, type: .withResponse)
+                
+                if self.remotePeripheral.first?.state == .connected {
+                    if let dataToWrite = ConstantsGlobal.opCode.data(using: .utf8) {
+                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withResponse)
+                    }
                 }
                 
                 print(serverResponce.error!, serverResponce.message!)
             }
-            catch {
+            catch let error {
+                print("Error: \(error)")
             }
             }.resume()
     }
     
-    private func convertToHex() {
-        
-    }
     
     private struct VerifyPaymentResponce: Decodable {
-        var error: Int?
+        var error: Bool?
         var message: String?
     }
     
@@ -117,11 +120,10 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if peripheral.name == "scopos"{
-            print(peripheral)
             peripheral.delegate = self
             self.remotePeripheral.append(peripheral)
-            centralManager?.connect(peripheral, options: nil)
             centralManager?.stopScan()
+            centralManager?.connect(peripheral, options: nil)
         }
     }
     
@@ -133,70 +135,88 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        
         if let error = error {
             print("error = \(error)")
             return
         }
-        for service in peripheral.services! {
+        
+        if let serviceArray = peripheral.services, serviceArray.isEmpty {
+            delegate?.statusToShowInAlert(message: NSLocalizedString("No MPS Service", comment: ""))
+        }
+        
+        if let mpsService = peripheral.services?.first {
             let characteristics = CBUUID(string: "6e400007-b5a3-f393-e0a9-e50e24dcca9e")
-            let writeCharacteristic = CBUUID(string:"6e400006-b5a3-f393-e0a9-e50e24dcca9e")
-            peripheral.discoverCharacteristics([characteristics, writeCharacteristic], for: service)
+            peripheral.discoverCharacteristics([characteristics], for: mpsService)
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        if let charesteristic = service.characteristics?.last {
-            peripheral.readValue(for: charesteristic)
+        
+        if let error = error {
+            print("error = \(error)")
+            return
         }
-        if let characterictic = service.characteristics?.first {
-            remoteCharacteristic = characterictic
+        
+        if let arrayOfSevices = service.characteristics, arrayOfSevices.isEmpty {
+            delegate?.statusToShowInAlert(message: NSLocalizedString("Error: No Values", comment: ""))
+        } else {
+            let machineDataCharecteristic = (service.characteristics?.first)!
+            remoteCharacteristic = machineDataCharecteristic
+            peripheral.setNotifyValue(true, for: machineDataCharecteristic)
         }
     }
     
+    
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        
         if let e = error {
             print("ERROR didUpdateValue \(e)")
             return
         }
         guard let data = characteristic.value else { return }
-        let bytesOperatorType = Data(bytes: [0, 1, 2, 3])
-        let bytesOperatorId = Data(bytes: [4, 5, 6, 7])
-        let bytesMachineType = Data(bytes: [8, 9, 10, 11])
-        let bytesMachineId = Data(bytes: [12, 13, 14, 15])
-        let bytesMachinePrice = Data(bytes: [16, 17, 18, 19])
         
-        // To Hex
-        let hexOperatorType = bytesOperatorType.hexEncodedString(options: .upperCase)
-        let hexOperatorId = bytesOperatorId.hexEncodedString(options: .upperCase)
-        let hexMachineType = bytesMachineType.hexEncodedString(options: .upperCase)
-        let hexMachineId = bytesMachineId.hexEncodedString(options: .upperCase)
-        let hexMachinePrice = bytesMachinePrice.hexEncodedString(options: .upperCase)
+        let operatorType = reverseDataAndGetDecimalValue(data: data, getBytes: [0, 1, 2, 3])
+        let operatorId = reverseDataAndGetDecimalValue(data: data, getBytes: [4, 5, 6, 7])
+        let machineType =  reverseDataAndGetDecimalValue(data: data, getBytes: [8, 9, 10, 11])
+        let machineId = reverseDataAndGetDecimalValue(data: data, getBytes: [12, 13, 14, 15])
+        let machinePrice = reverseDataAndGetDecimalValue(data: data, getBytes: [16, 17, 18, 19])
         
-        let hexsString = "Hex String____ Operator Type: \(hexOperatorType), OperatorId: \(hexOperatorId), Machine Type: \(hexMachineType), Machine Id: \(hexMachineId), Machine Price: \(hexMachinePrice)"
+        MobilicardUserDefaults.shared.defaults.set(operatorId, forKey: "Operator id")
         
-        let operatorType = Int(hexOperatorType, radix: 16)
-        let operatorId = Int(hexOperatorId, radix: 16)
-        let machineType = Int(hexMachineType, radix: 16)
-        let machineId = Int(hexMachineId, radix: 16)
-        let machinePrice = Int(hexMachinePrice, radix: 16)
+        if MobilicardUserDefaults.shared.defaults.bool(forKey: "User Set Payment Method") {
+            delegate?.paymentApprovemetnRequest(operatorType: operatorType, operatorId: operatorId, machineType: machineType, machineId: machineId, cyclePrice: machinePrice)
+        } else {
+            disconnectFromScopos()
+            delegate?.showUserNeedToSetPaymentMethodAlert()
+        }
         
-        let intString = "Int String____ Operator Type: \(operatorType), OperatorId: \(operatorId), Machine Type: \(machineType), Machine Id: \(machineId), Machine Price: \(machinePrice)"
-        
-        delegate?.paymentApprovemetnRequest(dataFromScopos: hexsString + intString)
-        //        paymentApprovment(dataFromScopos: stringData)
+//                paymentApprovment(dataFromScopos: )
         //        centralManager?.cancelPeripheralConnection(peripheral)
     }
     
+    private func reverseDataAndGetDecimalValue(data: Data, getBytes: [Int]) -> String {
+        var reversedData = Data()
+        for reversedIndex in getBytes.reversed() {
+            reversedData.append(Data(bytes: [data[reversedIndex]]))
+        }
+        return String(Int(reversedData.hexEncodedString(), radix: 16)!)
+    }
+    
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        
         if error != nil {
             
         }
         centralManager?.cancelPeripheralConnection(peripheral)
+        
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        //        delegate?.bleDisconnected()
+        
+        delegate?.customUserAlert()
     }
+    
 }
 
 extension String {
@@ -217,13 +237,8 @@ extension String {
 }
 
 extension Data {
-    struct HexEncodingOptions: OptionSet {
-        let rawValue: Int
-        static let upperCase = HexEncodingOptions(rawValue: 1 << 0)
+    func hexEncodedString() -> String {
+        return map { String(format: "%02hhx", $0) }.joined()
     }
-    
-    func hexEncodedString(options: HexEncodingOptions = []) -> String {
-        let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
-        return map { String(format: format, $0) }.joined()
-    }
+
 }

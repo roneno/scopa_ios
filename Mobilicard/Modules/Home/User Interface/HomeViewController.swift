@@ -63,19 +63,19 @@ class HomeViewController: UIViewController {
     }
     @IBAction func searchDevice(_ sender: UIButton) {
         
-        if MobilicardUserDefaults.shared.defaults.bool(forKey: "User Added Payment Method") {
+        // MobilicardUserDefaults.shared.defaults.bool(forKey: "User Added Payment Method")
         self.navigation = HomeWireframe.sharedInstance
         self.navigation?.homeViewController = self
         self.navigation?.presentScanningScreen()
-        } else {
-            showAlert()
-        }
+//        else {
+//            showAlert()
+//        }
     }
     
     func showAlert() {
         let alert = UIAlertController(title: "Payment metod not set", message: "Please add payment method", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Set Payment Method", style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Set", style: .destructive, handler: { (action) in
             self.goToPayment()
         }))
         self.present(alert, animated: true, completion: nil)

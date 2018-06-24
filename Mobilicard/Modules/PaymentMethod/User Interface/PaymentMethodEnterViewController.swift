@@ -10,7 +10,6 @@ import UIKit
 
 class PaymentMethodEnterViewController: UIViewController {
     
-    
     @IBOutlet weak var cardNumber: UITextField!
     @IBOutlet weak var cvv: UITextField!
     @IBOutlet weak var expirationDate: UITextField!
@@ -20,12 +19,21 @@ class PaymentMethodEnterViewController: UIViewController {
     var interactor: PaymentMethodInteractor?
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cardNumber.delegate = self
+        cvv.delegate = self
+        expirationDate.delegate = self
+    }
+    
+    @IBAction func goToHomeScreen(_ sender: UIButton) {
+        let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
+        self.present(homeViewController, animated: true, completion: nil)
+    }
     @IBAction func addPaymentMethod(_ sender: UIButton) {
         isValidData()
-        interactor = PaymentMethodInteractor()
-        self.interactor?.delegate = self
-        interactor?.verifyPaymentMethod()
     }
+    
     
     func isValidData() {
         if let cardNumber = cardNumber.text, cardNumber.count <= 16,
@@ -33,38 +41,74 @@ class PaymentMethodEnterViewController: UIViewController {
             let expirationDate = expirationDate.text, expirationDate.count <= 4,
             let lastName = lastName.text, lastName.count > 0,
             let firstName = firstName.text, firstName.count > 0 {
-            MobilicardUserDefaults.shared.defaults.set(true, forKey: "User Added Payment Method")
-            MobilicardUserDefaults.shared.defaults.set(cardNumber, forKey: "User's Card Number")
-            MobilicardUserDefaults.shared.defaults.set(cardNumber.suffix(4), forKey: "User's Last Four Card Number Digits")
-            MobilicardUserDefaults.shared.defaults.set(expirationDate, forKey: "User's Card Expiration Date")
-            MobilicardUserDefaults.shared.defaults.set(cvv, forKey: "User's Card Cvv")
-            MobilicardUserDefaults.shared.defaults.set(firstName, forKey: "User's Card First Name")
-            MobilicardUserDefaults.shared.defaults.set(lastName, forKey: "User's Card Last Name")
+            
+            interactor = PaymentMethodInteractor()
+            self.interactor?.delegate = self
+            interactor?.verifyPaymentMethod(cardNumber: cardNumber, expirationDate: expirationDate, cvv: cvv, firstName: firstName, lastName: lastName)
+            
         } else {
-            let alert = UIAlertController(title: "Input error", message: "Please check card data", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Card Registration Failyre", comment: ""), message: NSLocalizedString("Please verify card data and try again", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
 }
 
 extension PaymentMethodEnterViewController: PaymentMethodDelegate {
-    func paymentMethodVerificationResponce(responceError: Int, responceStatus: String, responceMessage: String) {
-        print(responceError)
-        print(responceStatus)
-        print(responceMessage)
-        if responceError == 0 {
+    
+    func paymentMethodVerificationResponce(title: String, responceStatus: String, success: Bool) {
+        
+        if success {
             DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
+                let alert = UIAlertController(title: title, message: responceStatus, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.cancel, handler: { (action) in
+                    MobilicardUserDefaults.shared.defaults.set(true, forKey: "User Set Payment Method")
+                    let homeViewController = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
+                    self.present(homeViewController, animated: true, completion: nil)
+
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
-        }
-        else {
+            self.navigationController?.popViewController(animated: true)
+            
+        } else {
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Something Wrong", message: "Please check Your card details", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                let alert = UIAlertController(title: title, message: responceStatus, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }
     }
+}
+
+extension PaymentMethodEnterViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == cardNumber {
+        let maxLength = 16
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+        }
+        
+        if textField == cvv {
+            let maxLength = 3
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        
+        if textField == expirationDate {
+            let maxLength = 4
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+
+        return true
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RequestResponceDelegate: class {
-    func getResponceMessage(responceMessage: String, errorNumber: Int)
+    func getResponceMessage(responceMessage: String, errorNumber: Bool)
 }
 
 final class LoginInteractor: LoginInteractorProtocol {
@@ -71,7 +71,7 @@ final class LoginInteractor: LoginInteractorProtocol {
                 }
             }
             catch {
-                self.loginDelegate?.getResponceMessage(responceMessage: error.localizedDescription, errorNumber: -1)
+                self.loginDelegate?.getResponceMessage(responceMessage: error.localizedDescription, errorNumber: true)
             }
             }.resume()
     }
@@ -82,7 +82,7 @@ final class LoginInteractor: LoginInteractorProtocol {
     }
     
     private struct VerifySMSResponce: Decodable {
-        var error: Int?
+        var error: Bool?
         var message: String?
     }
     

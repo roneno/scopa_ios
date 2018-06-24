@@ -1,0 +1,18 @@
+/* Class = "UILabel"; text = "Waiting for automatic SMS verification sent to your phone number"; ObjectID = "b08-dD-1T5"; */
+"b08-dD-1T5.text" = "ממתין לקבלת קוד אימות שנשלח  sms שנשלח\n\למספר הטלפון שלך.\n\ \n";
+
+/* Class = "UILabel"; text = "Mobilicard will send tou an SMS to verify your phone number. Please enter your mobile number:"; ObjectID = "GMP-HU-VKH"; */
+"GMP-HU-VKH.text" = "אפליקציית Mobilicard תשלח סמס \n\ על מנת לאמת את מספר הטלפון שלך.\n\ אנא הקלידו את מספר הטלפון:";
+
+/* Class = "UIButton"; normalTitle = "Send me SMS"; ObjectID = "Mw4-OQ-igu"; */
+"Mw4-OQ-igu.normalTitle" = "שלח לי SMS";
+
+/* Class = "UITextField"; placeholder = "Mobile Number"; ObjectID = "Wvn-cg-0cd"; */
+"Wvn-cg-0cd.placeholder" = "מספר נייד";
+
+/* Class = "UIButton"; normalTitle = "Resend SMS"; ObjectID = "Y0P-ef-Cw5"; */
+"Y0P-ef-Cw5.normalTitle" = "שלח לי שוב SMS";
+
+/* Class = "UITextField"; placeholder = "5-Digit Code"; ObjectID = "ZQ1-RE-zLE"; */
+"ZQ1-RE-zLE.placeholder" = "הקלד את הקוד שהתקבל";
+

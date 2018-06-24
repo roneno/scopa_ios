@@ -49,32 +49,30 @@ final class ScanningViewController: UIViewController {
         self.interactor?.delegate = self
         //        self.interactor?.paymentApprovment(dataFromScopos: "g")
         self.interactor?.searchForScopos()
-        self.interactor?.paymentApprovment(dataFromScopos: "123")
+//        self.interactor?.paymentApprovment(cyclePrice: String, operatorId: String, machineType: String, machineId: String, dataFromScopos: "123")
     }
     
-    func didDiconnectAllert(message: String?, err: Int) {
-        print(err)
-        if err == 0 {
-            let alert = UIAlertController(title: "Payment Success", message: "Payment Was Successful", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            if let errorMessage = message {
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
-        self.present(alert, animated: true, completion: nil)
-            }
-        }
+    func customUserMessageAllert(message: String?, err: Int) {
         
+            if let errorMessage = message, errorMessage == "Scopos Was Disconnected" {
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message:NSLocalizedString("Scropos Was Disconnected", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+        self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error Payment", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+                self.present(alert, animated: true, completion: nil)
+        }
     }
     
-    func showPaymentConfirmationAlert(dataFromScopos: String) {
-        let alert = UIAlertController(title: "Payment Confirmation", message: "\(dataFromScopos)", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)
+    func showPaymentConfirmationAlert(operatorType: String, operatorId: String, machineType: String, machineId: String , cyclePrice: String) {
+        
+        let alert = UIAlertController(title: NSLocalizedString("Payment Confirmation", comment: ""), message: NSLocalizedString("Do You accept Payment of \(handlePrice(cyclePrice: cyclePrice))", comment: "String showing to user"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)
             self.interactor?.disconnectFromScopos()
         }))
-//        alert.addAction(UIAlertAction(title: "Approve", style: .destructive, handler: {(alert: UIAlertAction!) in
-//            self.interactor?.paymentApprovment(dataFromScopos: dataFromScopos)}))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Approve", comment: ""), style: .destructive, handler: {(alert: UIAlertAction!) in
+            self.interactor?.paymentApprovment(cyclePrice: cyclePrice, operatorId: operatorId, machineType: machineType, machineId: machineId)}))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -84,25 +82,65 @@ final class ScanningViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-}
-
-extension ScanningViewController: ScanningInterectorDelegate {
-    func paymentApprovemetnRequest(dataFromScopos: String) {
-        DispatchQueue.main.async {
-            self.showPaymentConfirmationAlert(dataFromScopos: dataFromScopos)
+    func handlePrice(cyclePrice: String) -> String {
+        var cyclePrice = cyclePrice
+        if cyclePrice.count <= 2 {
+            return "nis: 00, cents: \(cyclePrice)"
+        } else {
+            let endIndex = cyclePrice.index(cyclePrice.endIndex, offsetBy: -2)
+            let truncated = cyclePrice.substring(to: endIndex)
+            return "nis: \(truncated), cents: \(cyclePrice.removeLast(2))"
         }
     }
     
-    func didPaymentAproovmentResponce(errorNumber: Int, serverResponce: String) {
+}
+
+extension ScanningViewController: ScanningInterectorDelegate {
+    
+    func showUserNeedToSetPaymentMethodAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("Payment metod not set", comment: ""), message: NSLocalizedString("Please add payment method", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Not now", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                let innerAlert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("You need to enter valid payment method", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                innerAlert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
+                    exit(0)
+                }))
+                self.present(innerAlert, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Set now", comment: ""), style: .destructive, handler: { (action) in
+                let paymentViewController = UIStoryboard.init(name: "PaymentMethod", bundle: nil).instantiateViewController(withIdentifier: "PaymentMethodEnterViewController")
+                
+                self.present(paymentViewController, animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func customUserAlert() {
+        self.customUserMessageAllert(message: nil, err: 0)
+    }
+    
+    
+    func paymentApprovemetnRequest(operatorType: String, operatorId: String, machineType: String, machineId: String , cyclePrice: String) {
+        
+        DispatchQueue.main.async {
+            self.showPaymentConfirmationAlert(operatorType: operatorType, operatorId: operatorId, machineType: machineType, machineId: machineId, cyclePrice: cyclePrice)
+        }
+    }
+    
+    func didPaymentAproovmentResponce(errorNumber: Bool, serverResponce: String) {
             DispatchQueue.main.async {
-                self.didDiconnectAllert(message: serverResponce, err: errorNumber)
+                self.customUserMessageAllert(message: serverResponce, err: 1)
             }
     }
     
     //Use or Delete
     func statusToShowInAlert(message: String?) {
         DispatchQueue.main.async {
-            self.didDiconnectAllert(message: message, err: 0)
+            self.customUserMessageAllert(message: message, err: 0)
         }
     }
+    
+    
 }

@@ -1,0 +1,30 @@
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "807-V3-zb8"; */
+"807-V3-zb8.placeholder" = "First Name";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "Cjp-QX-lZF"; */
+"Cjp-QX-lZF.normalTitle" = "Add";
+
+/* Class = "UITextField"; placeholder = "Exp Date"; ObjectID = "EU1-5n-8ay"; */
+"EU1-5n-8ay.placeholder" = "Exp Date";
+
+/* Class = "UILabel"; text = "No Payment Method Set"; ObjectID = "Gsd-je-loq"; */
+"Gsd-je-loq.text" = "No Payment Method Set";
+
+/* Class = "UITextField"; placeholder = "CVV"; ObjectID = "JvY-TT-c3W"; */
+"JvY-TT-c3W.placeholder" = "CVV";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "LSf-HR-QoM"; */
+"LSf-HR-QoM.placeholder" = "Last Name";
+
+/* Class = "UIButton"; normalTitle = "Add Payment Method"; ObjectID = "SMK-If-jW5"; */
+"SMK-If-jW5.normalTitle" = "Add Payment Method";
+
+/* Class = "UILabel"; text = "Card data is stored securely"; ObjectID = "Tq1-re-6Bb"; */
+"Tq1-re-6Bb.text" = "Card data is stored securely";
+
+/* Class = "UILabel"; text = "Please enter card details:"; ObjectID = "jM5-f3-80x"; */
+"jM5-f3-80x.text" = "Please enter card details:";
+
+/* Class = "UITextField"; placeholder = "Card Number"; ObjectID = "mhg-mp-sIc"; */
+"mhg-mp-sIc.placeholder" = "Card Number";

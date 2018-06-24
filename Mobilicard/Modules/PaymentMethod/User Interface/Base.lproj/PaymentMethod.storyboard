@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,10 +30,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjp-QX-lZF">
                                         <rect key="frame" x="236.5" y="0.0" width="98.5" height="30"/>
-                                        <state key="normal" title="Add"/>
-                                        <connections>
-                                            <segue destination="o7I-3y-iSd" kind="show" id="dHK-iH-fpD"/>
-                                        </connections>
+                                        <state key="normal" title="Remove"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -63,7 +60,7 @@
         <!--Payment Method Enter View Controller-->
         <scene sceneID="3y7-Lz-QNb">
             <objects>
-                <viewController id="o7I-3y-iSd" customClass="PaymentMethodEnterViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentMethodEnterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o7I-3y-iSd" customClass="PaymentMethodEnterViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jbI-XZ-ye5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,6 +151,14 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addPaymentMethod:" destination="o7I-3y-iSd" eventType="touchUpInside" id="Sxh-tP-rie"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-5P-39v">
+                                <rect key="frame" x="16" y="20" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt;Back"/>
+                                <connections>
+                                    <action selector="goToHomeScreen:" destination="o7I-3y-iSd" eventType="touchUpInside" id="6q3-bS-LWg"/>
                                 </connections>
                             </button>
                         </subviews>
