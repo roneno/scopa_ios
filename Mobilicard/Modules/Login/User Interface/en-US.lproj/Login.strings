@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Mobilicard will send tou an SMS to verify your phone number. Please enter your mobile number:"; ObjectID = "GMP-HU-VKH"; */
+"GMP-HU-VKH.text" = "Mobilicard will send tou an SMS to verify your phone number. Please enter your mobile number:";
+
+/* Class = "UILabel"; text = "By pressing the button You agree the term of Service"; ObjectID = "Jzf-8k-PyV"; */
+"Jzf-8k-PyV.text" = "By pressing the button You agree the term of Service";
+
+/* Class = "UIButton"; normalTitle = "Send me SMS"; ObjectID = "Mw4-OQ-igu"; */
+"Mw4-OQ-igu.normalTitle" = "Send me SMS";
+
+/* Class = "UITextField"; placeholder = "Mobile Number"; ObjectID = "Wvn-cg-0cd"; */
+"Wvn-cg-0cd.placeholder" = "Mobile Number";
+
+/* Class = "UIButton"; normalTitle = "Resend SMS"; ObjectID = "Y0P-ef-Cw5"; */
+"Y0P-ef-Cw5.normalTitle" = "Resend SMS";
+
+/* Class = "UITextField"; placeholder = "5-Digit Code"; ObjectID = "ZQ1-RE-zLE"; */
+"ZQ1-RE-zLE.placeholder" = "5-Digit Code";
+
+/* Class = "UILabel"; text = "Waiting for automatic SMS verification sent to your phone number"; ObjectID = "b08-dD-1T5"; */
+"b08-dD-1T5.text" = "Waiting for automatic SMS verification sent to your phone number";
+
+/* Class = "UILabel"; text = "Please enter Your SMS code"; ObjectID = "qfG-WD-kzO"; */
+"qfG-WD-kzO.text" = "Please enter Your SMS code";

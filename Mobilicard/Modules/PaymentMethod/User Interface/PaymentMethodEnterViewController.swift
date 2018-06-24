@@ -47,7 +47,7 @@ class PaymentMethodEnterViewController: UIViewController {
             interactor?.verifyPaymentMethod(cardNumber: cardNumber, expirationDate: expirationDate, cvv: cvv, firstName: firstName, lastName: lastName)
             
         } else {
-            let alert = UIAlertController(title: NSLocalizedString("Card Registration Failyre", comment: ""), message: NSLocalizedString("Please verify card data and try again", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Card Registration Error", comment: ""), message: NSLocalizedString("Please verify card data and try again", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

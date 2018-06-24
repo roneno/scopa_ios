@@ -71,6 +71,14 @@
 		951043E720DF6BDB00F43F5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
 		951043E920DF716900F43F5D /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		951043EC20DF7CE000F43F5D /* ConstantsGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsGlobal.swift; sourceTree = "<group>"; };
+		951043EE20E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Login.strings"; sourceTree = "<group>"; };
+		951043EF20E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/PrivacyPolicy.strings"; sourceTree = "<group>"; };
+		951043F020E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/PaymentMethod.strings"; sourceTree = "<group>"; };
+		951043F120E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Scanning.strings"; sourceTree = "<group>"; };
+		951043F220E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Home.strings"; sourceTree = "<group>"; };
+		951043F320E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		951043F420E0239600F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		951043F520E0239700F43F5D /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		95A60B0C20DEDFC900395F24 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Home.strings; sourceTree = "<group>"; };
 		95A60B0D20DEDFC900395F24 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		95A60B0F20DEE0F500395F24 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -521,6 +529,7 @@
 				en,
 				Base,
 				he,
+				"en-US",
 			);
 			mainGroup = A0FE2605200C9A13009420E4;
 			productRefGroup = A0FE260F200C9A13009420E4 /* Products */;
@@ -607,6 +616,7 @@
 				951043D420DF6B7900F43F5D /* Base */,
 				951043D620DF6B7B00F43F5D /* en */,
 				951043D720DF6B7F00F43F5D /* he */,
+				951043EF20E0239600F43F5D /* en-US */,
 			);
 			name = PrivacyPolicy.storyboard;
 			sourceTree = "<group>";
@@ -617,6 +627,7 @@
 				951043DB20DF6B8B00F43F5D /* Base */,
 				951043DD20DF6B8D00F43F5D /* en */,
 				951043DE20DF6B9100F43F5D /* he */,
+				951043F020E0239600F43F5D /* en-US */,
 			);
 			name = PaymentMethod.storyboard;
 			sourceTree = "<group>";
@@ -627,6 +638,7 @@
 				951043E220DF6BC200F43F5D /* Base */,
 				951043E420DF6BC400F43F5D /* en */,
 				951043E520DF6BD100F43F5D /* he */,
+				951043F120E0239600F43F5D /* en-US */,
 			);
 			name = Scanning.storyboard;
 			sourceTree = "<group>";
@@ -635,6 +647,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				95A60B0F20DEE0F500395F24 /* he */,
+				951043F520E0239700F43F5D /* en-US */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -643,6 +656,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				95A60B1220DEE0F500395F24 /* he */,
+				951043F420E0239600F43F5D /* en-US */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -653,6 +667,7 @@
 				95A60B1820DF66C700395F24 /* en */,
 				95A60B1920DF66C900395F24 /* Base */,
 				95A60B1A20DF66E300395F24 /* he */,
+				951043EE20E0239600F43F5D /* en-US */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -663,6 +678,7 @@
 				A0FE2616200C9A14009420E4 /* Base */,
 				95A60B0C20DEDFC900395F24 /* he */,
 				951043E720DF6BDB00F43F5D /* en */,
+				951043F220E0239600F43F5D /* en-US */,
 			);
 			name = Home.storyboard;
 			sourceTree = "<group>";
@@ -672,6 +688,7 @@
 			children = (
 				A0FE261B200C9A14009420E4 /* Base */,
 				95A60B0D20DEDFC900395F24 /* he */,
+				951043F320E0239600F43F5D /* en-US */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -730,7 +747,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -784,7 +801,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

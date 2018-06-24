@@ -14,43 +14,54 @@
         <!--Payment Method View Controller-->
         <scene sceneID="TI8-xq-y1Y">
             <objects>
-                <viewController storyboardIdentifier="PaymentMethodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vJh-gu-iEh" customClass="PaymentMethodViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemovePaymentMethodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vJh-gu-iEh" customClass="PaymentMethodViewController" customModule="Mobilicard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ty-Fj-ucq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="cYp-et-gpi">
-                                <rect key="frame" x="20" y="85" width="335" height="30"/>
+                                <rect key="frame" x="20" y="118.5" width="335" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Payment Method Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsd-je-loq">
-                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**************4324" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsd-je-loq">
+                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjp-QX-lZF">
-                                        <rect key="frame" x="236.5" y="0.0" width="98.5" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-eE-ZGz">
+                                        <rect key="frame" x="194.5" y="0.0" width="140.5" height="30"/>
                                         <state key="normal" title="Remove"/>
+                                        <connections>
+                                            <action selector="removePaymentMethod:" destination="vJh-gu-iEh" eventType="touchUpInside" id="n2J-Ab-D7N"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kQc-dy-6fX"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid payment method:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCZ-JI-zhZ">
+                                <rect key="frame" x="16" y="90" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cYp-et-gpi" firstAttribute="centerX" secondItem="0Ty-Fj-ucq" secondAttribute="centerX" id="1kM-RV-xPc"/>
+                            <constraint firstItem="PCZ-JI-zhZ" firstAttribute="leading" secondItem="PRm-5b-KI5" secondAttribute="leading" constant="16" id="8ri-s3-eEP"/>
                             <constraint firstItem="cYp-et-gpi" firstAttribute="leading" secondItem="PRm-5b-KI5" secondAttribute="leading" constant="20" id="F82-1p-J2r"/>
-                            <constraint firstItem="cYp-et-gpi" firstAttribute="centerY" secondItem="0Ty-Fj-ucq" secondAttribute="centerY" multiplier="0.3" id="kCw-xT-O4l"/>
+                            <constraint firstItem="cYp-et-gpi" firstAttribute="centerY" secondItem="0Ty-Fj-ucq" secondAttribute="centerY" multiplier="0.4" id="kCw-xT-O4l"/>
+                            <constraint firstItem="PCZ-JI-zhZ" firstAttribute="centerY" secondItem="0Ty-Fj-ucq" secondAttribute="centerY" multiplier="0.3" id="kwj-Zs-Vhh"/>
                             <constraint firstItem="PRm-5b-KI5" firstAttribute="trailing" secondItem="cYp-et-gpi" secondAttribute="trailing" constant="20" id="maU-PE-Go0"/>
+                            <constraint firstItem="PCZ-JI-zhZ" firstAttribute="centerX" secondItem="0Ty-Fj-ucq" secondAttribute="centerX" id="zdk-8e-oQY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PRm-5b-KI5"/>
                     </view>
                     <navigationItem key="navigationItem" id="a5S-m6-UwM"/>
                     <connections>
-                        <outlet property="addRemoveButton" destination="Cjp-QX-lZF" id="bow-Sc-SHn"/>
-                        <outlet property="paymentMethodStatus" destination="Gsd-je-loq" id="imT-dZ-Rn3"/>
+                        <outlet property="creditCardNumber" destination="Gsd-je-loq" id="imT-dZ-Rn3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPl-yt-NgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -72,7 +83,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-WL-Rp1">
-                                <rect key="frame" x="64" y="567.5" width="246" height="32"/>
+                                <rect key="frame" x="64" y="267.5" width="246" height="32"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locker_frame" translatesAutoresizingMaskIntoConstraints="NO" id="C2n-u1-3Bj">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -175,7 +186,7 @@
                             <constraint firstItem="lNh-YX-4yw" firstAttribute="leading" secondItem="qaP-MU-naL" secondAttribute="leading" constant="40" id="LWB-pU-dM5"/>
                             <constraint firstItem="XM3-WL-Rp1" firstAttribute="centerX" secondItem="jbI-XZ-ye5" secondAttribute="centerX" id="MSm-2G-qgg"/>
                             <constraint firstItem="SMK-If-jW5" firstAttribute="centerY" secondItem="jbI-XZ-ye5" secondAttribute="centerY" id="N5E-SU-5Ap"/>
-                            <constraint firstItem="XM3-WL-Rp1" firstAttribute="centerY" secondItem="jbI-XZ-ye5" secondAttribute="centerY" multiplier="1.75" id="Qei-cn-0PD"/>
+                            <constraint firstItem="XM3-WL-Rp1" firstAttribute="centerY" secondItem="jbI-XZ-ye5" secondAttribute="centerY" multiplier="0.85" id="Qei-cn-0PD"/>
                             <constraint firstItem="mhg-mp-sIc" firstAttribute="centerY" secondItem="jbI-XZ-ye5" secondAttribute="centerY" multiplier="0.4" id="ZoN-pQ-JNB"/>
                             <constraint firstItem="mhg-mp-sIc" firstAttribute="centerX" secondItem="jbI-XZ-ye5" secondAttribute="centerX" id="d9X-vL-DLf"/>
                             <constraint firstItem="qaP-MU-naL" firstAttribute="trailing" secondItem="lNh-YX-4yw" secondAttribute="trailing" constant="40" id="ehN-Tx-aGW"/>
@@ -197,6 +208,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRw-Tj-SFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2199.1999999999998" y="-146.17691154422789"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DJb-sR-GIl">
+            <objects>
+                <viewController storyboardIdentifier="NoPaymentMethodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fiI-cj-N1v" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eOr-vr-6G4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add payment card please hold the phone close to the reader and press the start button" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nz6-MS-qfI">
+                                <rect key="frame" x="16" y="203.5" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid payment method:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gK2-1M-HNW">
+                                <rect key="frame" x="16" y="89.5" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No valid payment method set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQz-2f-twe">
+                                <rect key="frame" x="16" y="123" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gK2-1M-HNW" firstAttribute="centerY" secondItem="eOr-vr-6G4" secondAttribute="centerY" multiplier="0.3" id="8oK-HZ-pUI"/>
+                            <constraint firstItem="nz6-MS-qfI" firstAttribute="centerY" secondItem="eOr-vr-6G4" secondAttribute="centerY" multiplier="0.7" id="EDU-3H-rsG"/>
+                            <constraint firstItem="PQz-2f-twe" firstAttribute="leading" secondItem="yQn-d4-5cO" secondAttribute="leading" constant="16" id="IXm-oF-Jfo"/>
+                            <constraint firstItem="gK2-1M-HNW" firstAttribute="centerX" secondItem="eOr-vr-6G4" secondAttribute="centerX" id="MUX-HO-Iz7"/>
+                            <constraint firstItem="gK2-1M-HNW" firstAttribute="leading" secondItem="yQn-d4-5cO" secondAttribute="leading" constant="16" id="Qk4-CD-DXL"/>
+                            <constraint firstItem="PQz-2f-twe" firstAttribute="centerX" secondItem="eOr-vr-6G4" secondAttribute="centerX" id="Wcr-Fb-rJh"/>
+                            <constraint firstAttribute="trailing" secondItem="nz6-MS-qfI" secondAttribute="trailing" constant="16" id="aD7-7w-xjd"/>
+                            <constraint firstItem="nz6-MS-qfI" firstAttribute="leading" secondItem="yQn-d4-5cO" secondAttribute="leading" constant="16" id="agt-gO-Ayu"/>
+                            <constraint firstItem="PQz-2f-twe" firstAttribute="centerY" secondItem="eOr-vr-6G4" secondAttribute="centerY" multiplier="0.4" id="lZy-yI-gCe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yQn-d4-5cO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NbH-bN-BJH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5DZ-PA-FPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712.79999999999995" y="-146.17691154422789"/>
         </scene>
     </scenes>
     <resources>

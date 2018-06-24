@@ -12,8 +12,6 @@ protocol PaymentMethodDelegate {
     func paymentMethodVerificationResponce(title: String, responceStatus: String, success: Bool)
 }
 
-var lastFourDigitsOfCardNumber:String = ""
-
 class PaymentMethodInteractor {
     
     var delegate: PaymentMethodDelegate?
@@ -59,7 +57,7 @@ class PaymentMethodInteractor {
                     let messege = NSLocalizedString("Problem in card registration", comment: "")
                     self.delegate?.paymentMethodVerificationResponce(title: title, responceStatus: messege, success: false)
                 } else {
-                    lastFourDigitsOfCardNumber = String(cardNumber.suffix(4))
+                    MobilicardUserDefaults.shared.defaults.set(String(cardNumber.suffix(4)), forKey: "Last Four Numbers Of User Credit Card")
                     self.delegate?.paymentMethodVerificationResponce(title: NSLocalizedString("Success", comment: ""), responceStatus: NSLocalizedString("Card registration successful", comment: ""), success: true)
                 }
             }

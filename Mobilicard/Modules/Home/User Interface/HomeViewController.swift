@@ -57,9 +57,15 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func showPaymentScreen(_ sender: UIButton) {
-        self.navigation = HomeWireframe.sharedInstance
-        self.navigation?.homeViewController = self
-        self.navigation?.presentPaymentScreen()
+        if MobilicardUserDefaults.shared.defaults.string(forKey: "Last Four Numbers Of User Credit Card") == nil {
+            self.navigation = HomeWireframe.sharedInstance
+            self.navigation?.homeViewController = self
+            self.navigation?.presentPaymentScreen()
+        } else {
+            self.navigation = HomeWireframe.sharedInstance
+            self.navigation?.homeViewController = self
+            self.navigation?.presentRemovePaymentMethodScreen()
+        }
     }
     @IBAction func searchDevice(_ sender: UIButton) {
         

@@ -1,0 +1,30 @@
+/* No comment provided by engineer. */
+"Approve" = "אשר";
+
+/* No comment provided by engineer. */
+"Cancel" = "בטל";
+
+/* String showing to user */
+"Do You accept Payment of \(handlePrice(cyclePrice: cyclePrice))" = "האם את/אתה מאשר תשלום של ...?";
+
+/* No comment provided by engineer. */
+"Error" = "שגיאה";
+
+/* No comment provided by engineer. */
+"Error Payment" = "תקלה בתשלום";
+
+/* No comment provided by engineer. */
+"Error: No Values" = "שגיאה - אין ערכים";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Payment Confirmation" = "אישור תשלום";
+
+/* No comment provided by engineer. */
+"Please Enter a Valid Number" = "אנא הקלד מספר כרטיס חוקי";
+
+/* No comment provided by engineer. */
+"Scropos Was Disconnected" = "אירעה תקלת תקשורת עם המכונה - קשר נותק";
+

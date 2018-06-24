@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,23 +33,28 @@
                                     <action selector="dismiss:" destination="PDl-Mc-vGI" eventType="touchUpInside" id="BfF-SB-U63"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for machine near you..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBH-Zz-Mgf">
-                                <rect key="frame" x="59" y="340" width="256" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for machine near you..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBH-Zz-Mgf">
+                                <rect key="frame" x="27" y="340" width="320" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="256" id="6PO-fK-ysB"/>
+                                    <constraint firstAttribute="width" constant="320" id="6PO-fK-ysB"/>
                                     <constraint firstAttribute="height" constant="20.5" id="P0V-cg-Bo4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AmM-6S-goi">
+                                <rect key="frame" x="177" y="307" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GBH-Zz-Mgf" firstAttribute="centerY" secondItem="7b9-u8-cgU" secondAttribute="centerY" multiplier="1.05" id="9Z2-0S-nvM"/>
                             <constraint firstAttribute="trailing" secondItem="1dR-72-k5q" secondAttribute="trailing" constant="10" id="BLW-dP-hwv"/>
+                            <constraint firstItem="AmM-6S-goi" firstAttribute="centerX" secondItem="7b9-u8-cgU" secondAttribute="centerX" id="MqP-dr-dMq"/>
                             <constraint firstItem="1dR-72-k5q" firstAttribute="leading" secondItem="7b9-u8-cgU" secondAttribute="leading" constant="10" id="WHV-EP-8Pa"/>
                             <constraint firstItem="1dR-72-k5q" firstAttribute="centerY" secondItem="7b9-u8-cgU" secondAttribute="centerY" id="WHu-H9-akH"/>
+                            <constraint firstItem="AmM-6S-goi" firstAttribute="centerY" secondItem="7b9-u8-cgU" secondAttribute="centerY" multiplier="0.95" id="bfy-v8-gwX"/>
                             <constraint firstItem="GBH-Zz-Mgf" firstAttribute="centerX" secondItem="7b9-u8-cgU" secondAttribute="centerX" id="gPF-mu-I1G"/>
                             <constraint firstItem="1dR-72-k5q" firstAttribute="centerX" secondItem="7b9-u8-cgU" secondAttribute="centerX" id="ggh-WR-ItA"/>
                         </constraints>
@@ -57,6 +62,8 @@
                     </view>
                     <connections>
                         <outlet property="progressView" destination="1dR-72-k5q" id="fcZ-Em-1Tg"/>
+                        <outlet property="searchingText" destination="GBH-Zz-Mgf" id="IUz-yY-1lf"/>
+                        <outlet property="spinner" destination="AmM-6S-goi" id="1Lf-CQ-b2h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVu-Sk-1ys" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,7 +14,9 @@ final class ScanningViewController: UIViewController {
     
     var fractionalProgress:Float = 0
     
+    @IBOutlet weak var searchingText: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -78,6 +80,10 @@ final class ScanningViewController: UIViewController {
             self.interactor?.disconnectFromScopos()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Approve", comment: ""), style: .destructive, handler: {(alert: UIAlertAction!) in
+            self.spinner.isHidden = false
+            self.spinner.startAnimating()
+            self.searchingText.isHidden = false
+            self.searchingText.text = ConstantsGlobal.comunicateWithPaymentServerString
             self.interactor?.paymentApprovment(cyclePrice: cyclePrice, operatorId: operatorId, machineType: machineType, machineId: machineId)}))
         self.present(alert, animated: true, completion: nil)
     }
@@ -103,11 +109,18 @@ final class ScanningViewController: UIViewController {
 
 extension ScanningViewController: ScanningInterectorDelegate {
     
+    func stopTheProgressBar() {
+        timer.invalidate()
+        progressView.isHidden = true
+        searchingText.isHidden = true
+    }
+    
+    
     func showUserNeedToSetPaymentMethodAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: NSLocalizedString("Payment metod not set", comment: ""), message: NSLocalizedString("Please add payment method", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Payment method not set", comment: ""), message: NSLocalizedString("Please add payment method", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Not now", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
-                let innerAlert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("You need to enter valid payment method", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                let innerAlert = UIAlertController(title: NSLocalizedString("Payment method", comment: ""), message: NSLocalizedString("The application cannot be used withouth setting payment method", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 innerAlert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (action) in
                     exit(0)
                 }))
@@ -132,6 +145,8 @@ extension ScanningViewController: ScanningInterectorDelegate {
     
     func didPaymentAproovmentResponce(errorNumber: Bool, serverResponce: String) {
             DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.searchingText.isHidden = true
                 self.customUserMessageAllert(message: serverResponce, err: errorNumber)
             }
     }

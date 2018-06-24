@@ -14,6 +14,7 @@ protocol ScanningInterectorDelegate {
     func paymentApprovemetnRequest(operatorType: String, operatorId: String, machineType: String, machineId: String , cyclePrice: String)
     func statusToShowInAlert(message: String?)
     func showUserNeedToSetPaymentMethodAlert()
+    func stopTheProgressBar()
 }
 
 final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
@@ -36,6 +37,10 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
     
     func paymentApprovment(cyclePrice: String, operatorId: String, machineType: String, machineId: String) {
         
+        if self.remotePeripheral.first?.state != .connected {
+            MobilicardUserDefaults.shared.defaults.set(true, forKey: "Disconnect Situation")
+        }
+        
         guard let paymentApprovmentUrl = URL(string: Constants.paymentAproovmentUrl) else { return }
         
         var handledOperatorId = ""
@@ -56,7 +61,7 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
         let parameters = [
             "password" : Constants.applicationID,
             "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
-//            "machine_id" : machineId,
+            "machine_id" : machineId,
             "machine_type" : machineType,
             "operator_id" : handledOperatorId,
             "cycle_price" : cyclePrice
@@ -95,14 +100,12 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
                 print("Error: \(error)")
                 
                 print(self.remotePeripheral.first?.state)
-                if self.remotePeripheral.first?.state == .connected {
-                    if let dataToWrite = ConstantsGlobal.opCode.data(using: .utf8) {
-                        print(self.remoteCharacteristic)
-                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withResponse)
-                    }
-                }
             }
             }.resume()
+    }
+    
+    func writeDataToScopos(){
+        
     }
     
     
@@ -136,7 +139,7 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
+        delegate?.stopTheProgressBar()
         peripheral.delegate = self
         let serviceUUID = CBUUID(string: "6e400005-b5a3-f393-e0a9-e50e24dcca9e")
         peripheral.discoverServices([serviceUUID])
@@ -184,6 +187,12 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
             print("ERROR didUpdateValue \(e)")
             return
         }
+        
+        if MobilicardUserDefaults.shared.defaults.bool(forKey: "Disconnect Situation") {
+            writeDataToScopos()
+            return
+        }
+        
         guard let data = characteristic.value else { return }
         
         let operatorType = reverseDataAndGetDecimalValue(data: data, getBytes: [0, 1, 2, 3])

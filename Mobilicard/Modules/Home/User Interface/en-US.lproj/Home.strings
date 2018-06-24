@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; normalTitle = "menu"; ObjectID = "7GP-2C-3ya"; */
+"7GP-2C-3ya.normalTitle" = "menu";
+
+/* Class = "UIButton"; normalTitle = "Terms of Use"; ObjectID = "Fco-V1-56V"; */
+"Fco-V1-56V.normalTitle" = "Terms of Use";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "OZQ-y6-tNt"; */
+"OZQ-y6-tNt.normalTitle" = "Privacy Policy";
+
+/* Class = "UIButton"; normalTitle = "Payment Method"; ObjectID = "QB9-HY-Pn5"; */
+"QB9-HY-Pn5.normalTitle" = "Payment Method";
+
+/* Class = "UIButton"; normalTitle = "Payment History"; ObjectID = "Rvc-Qa-QEi"; */
+"Rvc-Qa-QEi.normalTitle" = "Payment History";
+
+/* Class = "UIButton"; normalTitle = "Support"; ObjectID = "cLt-JS-rp1"; */
+"cLt-JS-rp1.normalTitle" = "Support";
+
+/* Class = "UIButton"; normalTitle = "About"; ObjectID = "mS0-mZ-ehW"; */
+"mS0-mZ-ehW.normalTitle" = "About";
+
+/* Class = "UILabel"; text = "About Text"; ObjectID = "rZ2-RK-bQf"; */
+"rZ2-RK-bQf.text" = "About Text";
+
+/* Class = "UILabel"; text = "Support Text"; ObjectID = "voh-Mz-dqy"; */
+"voh-Mz-dqy.text" = "Support Text";

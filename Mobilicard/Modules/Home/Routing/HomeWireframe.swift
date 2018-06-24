@@ -27,9 +27,15 @@ final class HomeWireframe: HomeWireframeProtocol {
     }
     
     func presentPaymentScreen() {
-        let paymentViewController = UIStoryboard.init(name: Constants.paymentStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.paymentStoryboardIdentifier) as? PaymentMethodViewController
+        let paymentViewController = UIStoryboard.init(name: Constants.paymentStoryboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.paymentStoryboardIdentifier)
         
-        self.homeViewController?.navigationController?.pushViewController(paymentViewController!, animated: true)
+        self.homeViewController?.navigationController?.pushViewController(paymentViewController, animated: true)
+    }
+    
+    func presentRemovePaymentMethodScreen() {
+        let paymentViewController = UIStoryboard.init(name: Constants.paymentStoryboardName, bundle: nil).instantiateViewController(withIdentifier: "RemovePaymentMethodViewController")
+        
+        self.homeViewController?.navigationController?.pushViewController(paymentViewController, animated: true)
     }
     
     func presentHomeScreenViewControllerInWindow() {
@@ -44,7 +50,7 @@ final class HomeWireframe: HomeWireframeProtocol {
         static let scanningStoryboardName = "Scanning"
         static let scanningStoryboardIdentifier = "ScanningViewController"
         static let paymentStoryboardName = "PaymentMethod"
-        static let paymentStoryboardIdentifier = "PaymentMethodViewController"
+        static let paymentStoryboardIdentifier = "NoPaymentMethodViewController"
         static let homeStoryboardName = "Home"
         static let homeStoryboardIdentifier = "HomeViewController"
     }
