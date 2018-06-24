@@ -13,7 +13,6 @@ protocol ScanningInterectorDelegate {
     func didPaymentAproovmentResponce(errorNumber: Bool,serverResponce: String)
     func paymentApprovemetnRequest(operatorType: String, operatorId: String, machineType: String, machineId: String , cyclePrice: String)
     func statusToShowInAlert(message: String?)
-    func customUserAlert()
     func showUserNeedToSetPaymentMethodAlert()
 }
 
@@ -57,7 +56,7 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
         let parameters = [
             "password" : Constants.applicationID,
             "mobile_number" : MobilicardUserDefaults.shared.defaults.string(forKey: "User's Mobile Number"),
-            "machine_id" : machineId,
+//            "machine_id" : machineId,
             "machine_type" : machineType,
             "operator_id" : handledOperatorId,
             "cycle_price" : cyclePrice
@@ -79,13 +78,14 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
                 let serverResponce = try JSONDecoder().decode(VerifyPaymentResponce.self, from: data)
                 
                 print(serverResponce.message)
+                print(serverResponce.error)
                 
                 self.delegate?.didPaymentAproovmentResponce(errorNumber: serverResponce.error!, serverResponce: serverResponce.message!)
                 
                 
                 if self.remotePeripheral.first?.state == .connected {
                     if let dataToWrite = ConstantsGlobal.opCode.data(using: .utf8) {
-                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withResponse)
+                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withoutResponse)
                     }
                 }
                 
@@ -93,6 +93,14 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
             }
             catch let error {
                 print("Error: \(error)")
+                
+                print(self.remotePeripheral.first?.state)
+                if self.remotePeripheral.first?.state == .connected {
+                    if let dataToWrite = ConstantsGlobal.opCode.data(using: .utf8) {
+                        print(self.remoteCharacteristic)
+                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withResponse)
+                    }
+                }
             }
             }.resume()
     }
@@ -146,8 +154,9 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         
         if let mpsService = peripheral.services?.first {
-            let characteristics = CBUUID(string: "6e400007-b5a3-f393-e0a9-e50e24dcca9e")
-            peripheral.discoverCharacteristics([characteristics], for: mpsService)
+            let characteristicForRead = CBUUID(string: ConstantsGlobal.uuidForRead)
+            let characteristicForWrite = CBUUID(string: ConstantsGlobal.uuidForWrite)
+            peripheral.discoverCharacteristics([characteristicForRead, characteristicForWrite], for: mpsService)
         }
     }
     
@@ -164,6 +173,7 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
             let machineDataCharecteristic = (service.characteristics?.first)!
             remoteCharacteristic = machineDataCharecteristic
             peripheral.setNotifyValue(true, for: machineDataCharecteristic)
+            remoteCharacteristic = service.characteristics?.last
         }
     }
     
@@ -206,15 +216,13 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         
         if error != nil {
-            
+            print(error)
         }
         centralManager?.cancelPeripheralConnection(peripheral)
         
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        
-        delegate?.customUserAlert()
     }
     
 }

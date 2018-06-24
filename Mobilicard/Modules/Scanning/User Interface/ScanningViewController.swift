@@ -52,16 +52,22 @@ final class ScanningViewController: UIViewController {
 //        self.interactor?.paymentApprovment(cyclePrice: String, operatorId: String, machineType: String, machineId: String, dataFromScopos: "123")
     }
     
-    func customUserMessageAllert(message: String?, err: Int) {
+    func customUserMessageAllert(message: String?, err: Bool) {
         
+        if err {
             if let errorMessage = message, errorMessage == "Scopos Was Disconnected" {
-        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message:NSLocalizedString("Scropos Was Disconnected", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
-        self.present(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message:NSLocalizedString("Scropos Was Disconnected", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error Payment", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
                 self.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("Payment Was Successful", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -117,11 +123,6 @@ extension ScanningViewController: ScanningInterectorDelegate {
     }
     
     
-    func customUserAlert() {
-        self.customUserMessageAllert(message: nil, err: 0)
-    }
-    
-    
     func paymentApprovemetnRequest(operatorType: String, operatorId: String, machineType: String, machineId: String , cyclePrice: String) {
         
         DispatchQueue.main.async {
@@ -131,14 +132,14 @@ extension ScanningViewController: ScanningInterectorDelegate {
     
     func didPaymentAproovmentResponce(errorNumber: Bool, serverResponce: String) {
             DispatchQueue.main.async {
-                self.customUserMessageAllert(message: serverResponce, err: 1)
+                self.customUserMessageAllert(message: serverResponce, err: errorNumber)
             }
     }
     
     //Use or Delete
     func statusToShowInAlert(message: String?) {
         DispatchQueue.main.async {
-            self.customUserMessageAllert(message: message, err: 0)
+//            self.customUserMessageAllert(message: message, err: )
         }
     }
     
