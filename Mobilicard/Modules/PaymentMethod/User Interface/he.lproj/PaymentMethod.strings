@@ -1,17 +1,20 @@
+/* Class = "UIButton"; normalTitle = "<Back"; ObjectID = "3AF-5P-39v"; */
+"3AF-5P-39v.normalTitle" = "חזרה";
+
 /* Class = "UITextField"; placeholder = "First Name"; ObjectID = "807-V3-zb8"; */
 "807-V3-zb8.placeholder" = "שם פרטי";
 
-/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "Cjp-QX-lZF"; */
-"Cjp-QX-lZF.normalTitle" = "הוסף";
-
 /* Class = "UITextField"; placeholder = "Exp Date"; ObjectID = "EU1-5n-8ay"; */
-"EU1-5n-8ay.placeholder" = "תוקף כרטיס";
+"EU1-5n-8ay.placeholder" = "תוקף הכרטיס MMYY";
 
-/* Class = "UILabel"; text = "No Payment Method Set"; ObjectID = "Gsd-je-loq"; */
+/* Class = "UILabel"; text = "Valid payment method:"; ObjectID = "gK2-1M-HNW"; */
+"gK2-1M-HNW.text" = "אמצעי תשלום בתוקף:";
+
+/* Class = "UILabel"; text = "**************4324"; ObjectID = "Gsd-je-loq"; */
 "Gsd-je-loq.text" = "אין אמצעי תשלום בתוקף";
 
 /* Class = "UILabel"; text = "Please enter card details:"; ObjectID = "jM5-f3-80x"; */
-"jM5-f3-80x.text" = "Please enter card details:";
+"jM5-f3-80x.text" = "אנא הזן את פרטי כרטיס האשראי:";
 
 /* Class = "UITextField"; placeholder = "CVV"; ObjectID = "JvY-TT-c3W"; */
 "JvY-TT-c3W.placeholder" = "CVV";
@@ -21,6 +24,12 @@
 
 /* Class = "UITextField"; placeholder = "Card Number"; ObjectID = "mhg-mp-sIc"; */
 "mhg-mp-sIc.placeholder" = "מספר כרטיס";
+
+/* Class = "UILabel"; text = "Valid payment method:"; ObjectID = "PCZ-JI-zhZ"; */
+"PCZ-JI-zhZ.text" = "אמצעי תשלום בתוקף:";
+
+/* Class = "UILabel"; text = "No valid payment method set"; ObjectID = "PQz-2f-twe"; */
+"PQz-2f-twe.text" = "אין אמצעי תשלום בתוקף";
 
 /* Class = "UIButton"; normalTitle = "Add Payment Method"; ObjectID = "SMK-If-jW5"; */
 "SMK-If-jW5.normalTitle" = "הוסף/עדכן אמצעי תשלום";

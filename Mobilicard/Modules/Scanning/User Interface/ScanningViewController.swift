@@ -56,6 +56,8 @@ final class ScanningViewController: UIViewController {
     
     func customUserMessageAllert(message: String?, err: Bool) {
         
+        print(err,message)
+        
         if err {
             if let errorMessage = message, errorMessage == "Scopos Was Disconnected" {
                 let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message:NSLocalizedString("Scropos Was Disconnected", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -67,9 +69,22 @@ final class ScanningViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
+            if let errorMessage = message, errorMessage == "Scopos Was Disconnected" {
+                let alert = UIAlertController(title: NSLocalizedString("Communication problem", comment: ""), message:NSLocalizedString("Communication to machine lost when payment was don. Please retry and machine will activate automaticly without additional charge", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+                self.present(alert, animated: true, completion: nil)
+            } else if let errorMessage = message, errorMessage == "Success" {
+                    let alert = UIAlertController(title: NSLocalizedString("Activation Succesfully", comment: ""), message:NSLocalizedString("Machine Activated Successfuly without aditional charge.", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in
+                        exit(0)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+            } else {
             let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("Payment Was Successful", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in
+                exit(0)}))
             self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     

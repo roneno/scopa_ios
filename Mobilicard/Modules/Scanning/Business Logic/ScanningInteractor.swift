@@ -85,12 +85,17 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
                 print(serverResponce.message)
                 print(serverResponce.error)
                 
+                if self.remotePeripheral.first?.state == .connected {
                 self.delegate?.didPaymentAproovmentResponce(errorNumber: serverResponce.error!, serverResponce: serverResponce.message!)
+                } else {
+                    MobilicardUserDefaults.shared.defaults.set(true, forKey: "Disconnect Situation")
+                    self.delegate?.didPaymentAproovmentResponce(errorNumber: false, serverResponce: "Scopos Was Disconnected")
+                }
                 
                 
                 if self.remotePeripheral.first?.state == .connected {
                     if let dataToWrite = ConstantsGlobal.opCode.data(using: .utf8) {
-                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withoutResponse)
+                        self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withResponse)
                     }
                 }
                 
@@ -105,7 +110,11 @@ final class ScanningInteractor: NSObject, ScanningInteractorProtocol {
     }
     
     func writeDataToScopos(){
-        
+        if self.remotePeripheral.first?.state == .connected {
+            if let dataToWrite = ConstantsGlobal.opCode.data(using: .utf8) {
+                self.remotePeripheral.first?.writeValue(dataToWrite, for: self.remoteCharacteristic!, type: .withResponse)
+            }
+        }
     }
     
     
@@ -226,6 +235,10 @@ extension ScanningInteractor: CBCentralManagerDelegate, CBPeripheralDelegate {
         
         if error != nil {
             print(error)
+        }
+        if MobilicardUserDefaults.shared.defaults.bool(forKey: "Disconnect Situation") {
+        MobilicardUserDefaults.shared.defaults.set(false, forKey: "Disconnect Situation")
+             self.delegate?.didPaymentAproovmentResponce(errorNumber: false, serverResponce: "Success")
         }
         centralManager?.cancelPeripheralConnection(peripheral)
         
